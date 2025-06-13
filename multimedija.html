@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimedija - FKSInfo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <!-- Navbar -->
+  <nav class="bg-fks-red text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="text-2xl font-bold hover:text-red-200">FKSInfo</a>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="hover:text-red-200">Početna</a>
+          <a href="vijesti.html" class="hover:text-red-200">Vijesti</a>
+          <a href="utakmice.html" class="hover:text-red-200">Utakmice</a>
+          <a href="klub.html" class="hover:text-red-200">Klub</a>
+          <a href="igraci.html" class="hover:text-red-200">Igrači</a>
+          <a href="multimedija.html" class="text-red-200 font-semibold">Multimedija</a>
+          <a href="fan-zona.html" class="hover:text-red-200">Fan zona</a>
+          <a href="kontakt.html" class="hover:text-red-200">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="bg-fks-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Multimedija</h1>
+      <p class="text-lg text-red-200">Fotografije, videi i galerije FK Sarajevo</p>
+    </div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-fks-red text-white px-6 py-2 rounded-full font-semibold"
+          onclick="showSection('all')">Sve</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300"
+          onclick="showSection('photos')">Fotografije</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300"
+          onclick="showSection('videos')">Videi</button>
+        <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300"
+          onclick="showSection('galleries')">Galerije</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos" class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Video izvještaji</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-800 relative flex items-center justify-center">
+            <div class="text-white text-center">
+              <div class="text-4xl mb-2">▶️</div>
+              <div class="text-sm">Kliknite za reprodukciju</div>
+            </div>
+            <div class="absolute top-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              12:34
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Golovi sa utakmice FK Sarajevo - Igman</h3>
+            <p class="text-sm text-gray-600 mb-2">Svi golovi sa pobjede Bordo tima rezultatom 2:0</p>
+            <div class="text-xs text-gray-500">18. oktobar 2024 • 1.2K pregleda</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-800 relative flex items-center justify-center">
+            <div class="text-white text-center">
+              <div class="text-4xl mb-2">▶️</div>
+              <div class="text-sm">Kliknite za reprodukciju</div>
+            </div>
+            <div class="absolute top-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              8:45
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Intervju sa trenerom Mulalićem</h3>
+            <p class="text-sm text-gray-600 mb-2">Razgovor nakon importante pobjede</p>
+            <div class="text-xs text-gray-500">18. oktobar 2024 • 890 pregleda</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-800 relative flex items-center justify-center">
+            <div class="text-white text-center">
+              <div class="text-4xl mb-2">▶️</div>
+              <div class="text-sm">Kliknite za reprodukciju</div>
+            </div>
+            <div class="absolute top-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              15:22
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Atmosfera sa tribina - Horde Zla</h3>
+            <p class="text-sm text-gray-600 mb-2">Nevjerovatna podrška navijača tokom utakmice</p>
+            <div class="text-xs text-gray-500">18. oktobar 2024 • 2.1K pregleda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Galleries -->
+  <section id="photos" class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Fotografije sa utakmica</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 1</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 2</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 3</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 4</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 5</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 6</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 7</span>
+          </div>
+        </div>
+
+        <div
+          class="aspect-square bg-gray-300 rounded-lg overflow-hidden hover:opacity-75 transition-opacity cursor-pointer">
+          <div class="w-full h-full flex items-center justify-center text-gray-600">
+            <span class="text-sm">Foto 8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <button class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+          Učitaj više fotografija
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Collections -->
+  <section id="galleries" class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Galerije</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              24 fotografija
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">FK Sarajevo - Igman (18.10.2024)</h3>
+            <p class="text-sm text-gray-600">Fotografije sa utakmice na Grbavici</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              18 fotografija
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Trening prije derbija</h3>
+            <p class="text-sm text-gray-600">Priprema momčadi za važnu utakmicu</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              32 fotografije
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Horde Zla - Atmosfera</h3>
+            <p class="text-sm text-gray-600">Najbolji momenti sa tribina</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              15 fotografija
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Predstavljanje novog igrača</h3>
+            <p class="text-sm text-gray-600">Dal Varešanović u bordo dresu</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              41 fotografija
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Historijske fotografije</h3>
+            <p class="text-sm text-gray-600">Nezaboravni momenti iz prošlosti</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-xs">
+              28 fotografija
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Stadion Grbavica</h3>
+            <p class="text-sm text-gray-600">Naš dom kroz objektiv</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Stream Section -->
+  <section class="py-12 bg-fks-red text-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Uživo sa Grbavice</h2>
+      <p class="text-lg text-red-200 mb-8">Gledajte utakmice uživo na našem YouTube kanalu</p>
+      <div class="flex justify-center space-x-4">
+        <button class="bg-white text-fks-red px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+          📺 YouTube kanal
+        </button>
+        <button class="bg-red-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-900 transition-colors">
+          📱 Facebook Live
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-fks-dark-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center">
+        <p>&copy; 2024 FKSInfo. Sva prava zadržana.</p>
+        <p class="mt-2">Powered by FKSInfo team</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showSection(section) {
+      // This would filter content based on section
+      console.log('Showing section:', section);
+
+      // Update button styles
+      const buttons = document.querySelectorAll('section button');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-fks-red', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+      });
+
+      event.target.classList.remove('bg-gray-200', 'text-gray-700');
+      event.target.classList.add('bg-fks-red', 'text-white');
+    }
+  </script>
+</body>
+
+</html>

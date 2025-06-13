@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vijesti - FKSInfo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .mobile-menu-toggle:checked~.mobile-menu {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <!-- Navbar -->
+  <nav class="bg-fks-red text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="text-2xl font-bold hover:text-red-200 transition-colors">FKSInfo</a>
+        </div>
+
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="hover:text-red-200 transition-colors">Početna</a>
+          <a href="vijesti.html" class="text-red-200 font-semibold">Vijesti</a>
+          <a href="utakmice.html" class="hover:text-red-200 transition-colors">Utakmice</a>
+          <a href="klub.html" class="hover:text-red-200 transition-colors">Klub</a>
+          <a href="igraci.html" class="hover:text-red-200 transition-colors">Igrači</a>
+          <a href="multimedija.html" class="hover:text-red-200 transition-colors">Multimedija</a>
+          <a href="fan-zona.html" class="hover:text-red-200 transition-colors">Fan zona</a>
+          <a href="kontakt.html" class="hover:text-red-200 transition-colors">Kontakt</a>
+        </div>
+
+        <input type="checkbox" id="mobile-toggle" class="mobile-menu-toggle hidden">
+        <label for="mobile-toggle" class="md:hidden cursor-pointer">
+          <div class="w-6 h-6 flex flex-col justify-center items-center">
+            <span class="bg-white block h-0.5 w-6 mb-1"></span>
+            <span class="bg-white block h-0.5 w-6 mb-1"></span>
+            <span class="bg-white block h-0.5 w-6"></span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div
+      class="mobile-menu fixed inset-y-0 left-0 w-64 bg-fks-dark-red transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+      <div class="flex flex-col p-4 space-y-4 mt-16">
+        <a href="index.html" class="hover:text-red-200 transition-colors py-2">Početna</a>
+        <a href="vijesti.html" class="text-red-200 font-semibold py-2">Vijesti</a>
+        <a href="utakmice.html" class="hover:text-red-200 transition-colors py-2">Utakmice</a>
+        <a href="klub.html" class="hover:text-red-200 transition-colors py-2">Klub</a>
+        <a href="igraci.html" class="hover:text-red-200 transition-colors py-2">Igrači</a>
+        <a href="multimedija.html" class="hover:text-red-200 transition-colors py-2">Multimedija</a>
+        <a href="fan-zona.html" class="hover:text-red-200 transition-colors py-2">Fan zona</a>
+        <a href="kontakt.html" class="hover:text-red-200 transition-colors py-2">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="bg-fks-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Vijesti</h1>
+      <p class="text-lg text-red-200">Sve najnovije vijesti o FK Sarajevo</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap gap-4">
+        <button class="bg-fks-red text-white px-6 py-2 rounded-full font-semibold">Sve</button>
+        <button
+          class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">Transferi</button>
+        <button
+          class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">Intervjui</button>
+        <button
+          class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">Izjave</button>
+        <button
+          class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">Utakmice</button>
+        <button
+          class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors">Akademija</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Grid -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Featured Article -->
+        <article class="lg:col-span-2 bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-64 bg-gray-300 relative">
+            <div class="absolute top-4 left-4">
+              <span class="bg-fks-red text-white px-3 py-1 rounded-full text-sm font-semibold">UTAKMICA</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-bold mb-3 hover:text-fks-red transition-colors cursor-pointer">
+              <a href="vijesti-clanak.html">VIDEO: Izvještaj sa utakmice FK Sarajevo - Igman</a>
+            </h2>
+            <p class="text-gray-600 mb-4">Detaljni izvještaj sa pobjede Bordo tima rezultatom 2:0 na Grbavici. Golovi
+              Ahmetovića i Lendrića donijeli su važne tri boda.</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <span>Mirza Hodžić</span>
+              <span class="mx-2">•</span>
+              <span>18. listopad 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Regular Articles -->
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute top-4 left-4">
+              <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs">TRANSFER</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2 hover:text-fks-red transition-colors cursor-pointer">Dal Varešanović pojačanje za
+              zimski dio sezone</h3>
+            <p class="text-sm text-gray-600 mb-3">Iskusni vezista potpisao je ugovor do kraja sezone sa FK Sarajevo...
+            </p>
+            <div class="flex items-center text-xs text-gray-500">
+              <span>Amila Softić</span>
+              <span class="mx-2">•</span>
+              <span>15. listopad 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute top-4 left-4">
+              <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">INTERVJU</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2 hover:text-fks-red transition-colors cursor-pointer">Trener Mulalić: "Spremni smo
+              za derbi"</h3>
+            <p class="text-sm text-gray-600 mb-3">Glavni trener FK Sarajevo govori o pripremi za važnu utakmicu...</p>
+            <div class="flex items-center text-xs text-gray-500">
+              <span>Kemal Mršić</span>
+              <span class="mx-2">•</span>
+              <span>14. listopad 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute top-4 left-4">
+              <span class="bg-orange-600 text-white px-2 py-1 rounded text-xs">IZJAVA</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2 hover:text-fks-red transition-colors cursor-pointer">Kapiten poziva navijače na
+              podršku</h3>
+            <p class="text-sm text-gray-600 mb-3">Rahmanović traži maksimalnu podršku sa tribina za nadolazeće
+              utakmice...</p>
+            <div class="flex items-center text-xs text-gray-500">
+              <span>Selma Nuhanović</span>
+              <span class="mx-2">•</span>
+              <span>13. listopad 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute top-4 left-4">
+              <span class="bg-purple-600 text-white px-2 py-1 rounded text-xs">AKADEMIJA</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2 hover:text-fks-red transition-colors cursor-pointer">Omladinci pobijedili Zrinjski
+              3:1</h3>
+            <p class="text-sm text-gray-600 mb-3">Mladi Bordo igrači nastavili su sa odličnim rezultatima u omladinskoj
+              ligi...</p>
+            <div class="flex items-center text-xs text-gray-500">
+              <span>Amer Delić</span>
+              <span class="mx-2">•</span>
+              <span>12. listopad 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="h-48 bg-gray-300 relative">
+            <div class="absolute top-4 left-4">
+              <span class="bg-red-600 text-white px-2 py-1 rounded text-xs">SAOPŠTENJE</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2 hover:text-fks-red transition-colors cursor-pointer">Informacije o prodaji
+              ulaznica</h3>
+            <p class="text-sm text-gray-600 mb-3">Klub obavještava navijače o modalitetu prodaje ulaznica za sljedeću
+              utakmicu...</p>
+            <div class="flex items-center text-xs text-gray-500">
+              <span>FK Sarajevo</span>
+              <span class="mx-2">•</span>
+              <span>11. listopad 2024</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="text-center mt-12">
+        <button
+          class="bg-fks-red text-white px-8 py-3 rounded-lg hover:bg-fks-dark-red transition-colors font-semibold">
+          Učitaj više vijesti
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-fks-dark-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4">FKSInfo</h3>
+          <p class="text-red-200">Najveći fan portal posvećen FK Sarajevo. Sve vijesti, analize i informacije o našem
+            ljubimom klubu.</p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4">Navigacija</h4>
+          <ul class="space-y-2 text-red-200">
+            <li><a href="index.html" class="hover:text-white transition-colors">Početna</a></li>
+            <li><a href="vijesti.html" class="hover:text-white transition-colors">Vijesti</a></li>
+            <li><a href="utakmice.html" class="hover:text-white transition-colors">Utakmice</a></li>
+            <li><a href="igraci.html" class="hover:text-white transition-colors">Igrači</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4">Klub</h4>
+          <ul class="space-y-2 text-red-200">
+            <li><a href="klub.html" class="hover:text-white transition-colors">Historija</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Stadion</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Uprava</a></li>
+            <li><a href="kontakt.html" class="hover:text-white transition-colors">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4">Pratite nas</h4>
+          <div class="flex space-x-4 text-red-200">
+            <a href="#" class="hover:text-white transition-colors">Facebook</a>
+            <a href="#" class="hover:text-white transition-colors">Twitter</a>
+            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-red-800 mt-8 pt-8 text-center text-red-200">
+        <p>&copy; 2024 FKSInfo. Sva prava zadržana.</p>
+        <p class="mt-2">Powered by FKSInfo team</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    document.getElementById('mobile-toggle').addEventListener('change', function () {
+      if (this.checked) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('section button');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-fks-red', 'text-white');
+          btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+
+        // Add active class to clicked button
+        this.classList.remove('bg-gray-200', 'text-gray-700');
+        this.classList.add('bg-fks-red', 'text-white');
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fan zona - FKSInfo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <!-- Navbar -->
+  <nav class="bg-fks-red text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="text-2xl font-bold hover:text-red-200">FKSInfo</a>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="hover:text-red-200">Početna</a>
+          <a href="vijesti.html" class="hover:text-red-200">Vijesti</a>
+          <a href="utakmice.html" class="hover:text-red-200">Utakmice</a>
+          <a href="klub.html" class="hover:text-red-200">Klub</a>
+          <a href="igraci.html" class="hover:text-red-200">Igrači</a>
+          <a href="multimedija.html" class="hover:text-red-200">Multimedija</a>
+          <a href="fan-zona.html" class="text-red-200 font-semibold">Fan zona</a>
+          <a href="kontakt.html" class="hover:text-red-200">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="bg-fks-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Fan zona</h1>
+      <p class="text-lg text-red-200">Službena prodavnica i fan sadržaj FK Sarajevo</p>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Izdvojeni proizvodi</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+          <div class="h-64 bg-fks-red relative">
+            <div class="absolute top-4 left-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">
+              NOVO
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Domaći dres 2024/25</h3>
+            <p class="text-sm text-gray-600 mb-3">Zvaničan bordo dres nove sezone</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-bold text-fks-red">89 KM</span>
+              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
+                Dodaj
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+          <div class="h-64 bg-white border-2 border-fks-red">
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Gostujući dres 2024/25</h3>
+            <p class="text-sm text-gray-600 mb-3">Bijeli dres za gostujuće utakmice</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-bold text-fks-red">89 KM</span>
+              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
+                Dodaj
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+          <div class="h-64 bg-gray-600">
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">FK Sarajevo šal</h3>
+            <p class="text-sm text-gray-600 mb-3">Klasičan navijački šal</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-bold text-fks-red">25 KM</span>
+              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
+                Dodaj
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+          <div class="h-64 bg-fks-red">
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold mb-2">Bordo kačket</h3>
+            <p class="text-sm text-gray-600 mb-3">Kačket sa zvaničnim logom</p>
+            <div class="flex items-center justify-between">
+              <span class="text-2xl font-bold text-fks-red">35 KM</span>
+              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
+                Dodaj
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Categories -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Kategorije proizvoda</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+          <div class="text-4xl mb-4">👕</div>
+          <h3 class="font-bold">Dresovi</h3>
+          <p class="text-sm text-gray-600 mt-2">12 proizvoda</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+          <div class="text-4xl mb-4">🧢</div>
+          <h3 class="font-bold">Kačketi</h3>
+          <p class="text-sm text-gray-600 mt-2">8 proizvoda</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+          <div class="text-4xl mb-4">🧣</div>
+          <h3 class="font-bold">Šalovi</h3>
+          <p class="text-sm text-gray-600 mt-2">5 proizvoda</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+          <div class="text-4xl mb-4">⚽</div>
+          <h3 class="font-bold">Aksesori</h3>
+          <p class="text-sm text-gray-600 mt-2">15 proizvoda</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fan Poll -->
+  <section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Navijačka anketa</h2>
+
+      <div class="bg-gray-50 rounded-lg p-8">
+        <h3 class="text-xl font-semibold mb-6">Koji je vaš omiljeni trenutni igrač FK Sarajevo?</h3>
+
+        <form class="space-y-4">
+          <label class="flex items-center space-x-3 cursor-pointer p-3 rounded hover:bg-gray-100">
+            <input type="radio" name="player" value="ahmetovic" class="text-fks-red">
+            <div class="flex-1 flex items-center justify-between">
+              <span>Mersudin Ahmetović</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-32 bg-gray-200 rounded-full h-2">
+                  <div class="bg-fks-red h-2 rounded-full" style="width: 35%"></div>
+                </div>
+                <span class="text-sm text-gray-600">35%</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="flex items-center space-x-3 cursor-pointer p-3 rounded hover:bg-gray-100">
+            <input type="radio" name="player" value="varesanovic" class="text-fks-red">
+            <div class="flex-1 flex items-center justify-between">
+              <span>Dal Varešanović</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-32 bg-gray-200 rounded-full h-2">
+                  <div class="bg-fks-red h-2 rounded-full" style="width: 28%"></div>
+                </div>
+                <span class="text-sm text-gray-600">28%</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="flex items-center space-x-3 cursor-pointer p-3 rounded hover:bg-gray-100">
+            <input type="radio" name="player" value="lendric" class="text-fks-red">
+            <div class="flex-1 flex items-center justify-between">
+              <span>Ivan Lendrić</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-32 bg-gray-200 rounded-full h-2">
+                  <div class="bg-fks-red h-2 rounded-full" style="width: 22%"></div>
+                </div>
+                <span class="text-sm text-gray-600">22%</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="flex items-center space-x-3 cursor-pointer p-3 rounded hover:bg-gray-100">
+            <input type="radio" name="player" value="kovacevic" class="text-fks-red">
+            <div class="flex-1 flex items-center justify-between">
+              <span>Vladan Kovačević</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-32 bg-gray-200 rounded-full h-2">
+                  <div class="bg-fks-red h-2 rounded-full" style="width: 15%"></div>
+                </div>
+                <span class="text-sm text-gray-600">15%</span>
+              </div>
+            </div>
+          </label>
+        </form>
+
+        <div class="mt-6 flex items-center justify-between">
+          <button class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+            Glasaj
+          </button>
+          <span class="text-sm text-gray-600">Ukupno glasova: 1,847</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fan Stats -->
+  <section class="py-12 bg-fks-red text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Navijačke statistike</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold mb-2">13,500</div>
+          <div class="text-red-200">Sezonski karta</div>
+        </div>
+
+        <div>
+          <div class="text-4xl font-bold mb-2">78</div>
+          <div class="text-red-200">Godina tradicije</div>
+        </div>
+
+        <div>
+          <div class="text-4xl font-bold mb-2">1987</div>
+          <div class="text-red-200">Godina osnivanja HZ</div>
+        </div>
+
+        <div>
+          <div class="text-4xl font-bold mb-2">50K+</div>
+          <div class="text-red-200">Aktivni navijači</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-fks-red mb-4">Prijavite se za newsletter</h2>
+      <p class="text-gray-600 mb-8">Budite prvi koji će saznati o novim proizvodima i akcijama</p>
+
+      <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" placeholder="Vaša email adresa"
+          class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-fks-red">
+        <button type="submit"
+          class="bg-fks-red text-white px-6 py-3 rounded-lg hover:bg-fks-dark-red transition-colors">
+          Prijavite se
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-fks-dark-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center">
+        <p>&copy; 2024 FKSInfo. Sva prava zadržana.</p>
+        <p class="mt-2">Powered by FKSInfo team</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

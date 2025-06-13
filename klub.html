@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klub - FKSInfo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <!-- Navbar -->
+  <nav class="bg-fks-red text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="text-2xl font-bold hover:text-red-200">FKSInfo</a>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="hover:text-red-200">Početna</a>
+          <a href="vijesti.html" class="hover:text-red-200">Vijesti</a>
+          <a href="utakmice.html" class="hover:text-red-200">Utakmice</a>
+          <a href="klub.html" class="text-red-200 font-semibold">Klub</a>
+          <a href="igraci.html" class="hover:text-red-200">Igrači</a>
+          <a href="multimedija.html" class="hover:text-red-200">Multimedija</a>
+          <a href="fan-zona.html" class="hover:text-red-200">Fan zona</a>
+          <a href="kontakt.html" class="hover:text-red-200">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="bg-fks-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">FK Sarajevo</h1>
+      <p class="text-lg text-red-200">Historija, trofeji i tradicija Bordo tima</p>
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Historija kluba</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <div class="prose prose-lg">
+            <p class="text-lg mb-6">
+              FK Sarajevo je osnovan 24. oktobra 1946. godine spajanjem nekoliko sarajevskih klubova.
+              Klub je brzo stekao reputaciju kao jedan od najuspješnijih u regiji.
+            </p>
+            <p class="mb-6">
+              Kroz svoju bogatu historiju, FK Sarajevo je osvojio brojne titule i ostavio neizbrisiv trag
+              u svijetu fudbala. Klub je poznat po svojoj strastvenim navijačima i prepoznatljivim bordo dresovima.
+            </p>
+            <p class="mb-6">
+              Najveći uspjeh u istoriji kluba bio je finale Kupa pobjednika kupova 1985. godine u Strazburu,
+              gdje je FK Sarajevo izgubio od Evertona rezultatom 3:1.
+            </p>
+          </div>
+        </div>
+        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+          <span class="text-gray-600">Historijska fotografija FK Sarajevo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trophies Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Trofeji</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-yellow-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-2xl">🏆</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Prvak Jugoslavije</h3>
+          <p class="text-3xl font-bold text-fks-red mb-2">2</p>
+          <p class="text-sm text-gray-600">1967, 1985</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-silver rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-2xl">🥈</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Kup Jugoslavije</h3>
+          <p class="text-3xl font-bold text-fks-red mb-2">7</p>
+          <p class="text-sm text-gray-600">1967, 1971, 1980, 1981, 1982, 1984, 1986</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-orange-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-2xl">🏅</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Premier Liga BiH</h3>
+          <p class="text-3xl font-bold text-fks-red mb-2">3</p>
+          <p class="text-sm text-gray-600">2007, 2014, 2019</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-blue-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-2xl">🏆</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Kup BiH</h3>
+          <p class="text-3xl font-bold text-fks-red mb-2">4</p>
+          <p class="text-sm text-gray-600">2002, 2005, 2014, 2018</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-purple-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-2xl">⭐</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Kup pobjednika kupova</h3>
+          <p class="text-3xl font-bold text-gray-500 mb-2">F</p>
+          <p class="text-sm text-gray-600">Finale 1985</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="w-20 h-20 bg-green-400 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <span class="text-2xl">🎖️</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Superkup BiH</h3>
+          <p class="text-3xl font-bold text-fks-red mb-2">2</p>
+          <p class="text-sm text-gray-600">2014, 2019</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stadium Section -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Stadion Grbavica</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="bg-gray-200 h-80 rounded-lg flex items-center justify-center">
+          <span class="text-gray-600">Fotografija stadiona Grbavica</span>
+        </div>
+        <div>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-fks-red">Osnovne informacije</h3>
+              <ul class="space-y-2">
+                <li><strong>Naziv:</strong> Stadion Grbavica</li>
+                <li><strong>Kapacitet:</strong> 13.500 mjesta</li>
+                <li><strong>Otvoren:</strong> 1951. godina</li>
+                <li><strong>Renoviran:</strong> 2018. godina</li>
+                <li><strong>Adresa:</strong> Patriotske lige 41, Sarajevo</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-fks-red">Rekord posjećenosti</h3>
+              <p class="mb-2"><strong>18.500 gledalaca</strong></p>
+              <p class="text-gray-600">FK Sarajevo - Željezničar (1981)</p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold mb-2 text-fks-red">Tribine</h3>
+              <ul class="space-y-1">
+                <li>• Istočna tribina (glavna)</li>
+                <li>• Zapadna tribina</li>
+                <li>• Sjeverna tribina (Horde Zla)</li>
+                <li>• Južna tribina</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fans Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-fks-red mb-8">Navijači - Horde Zla</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div>
+          <div class="prose prose-lg">
+            <p class="text-lg mb-6">
+              <strong>Horde Zla</strong> su organizovana navijačka grupa FK Sarajevo osnovana 1987. godine.
+              Poznati su po svojoj strastvenom navijanju i nepokolebljivoj podršci klubu.
+            </p>
+            <p class="mb-6">
+              Grup se smatra jednom od najorganizovanijem navijačkih grupa u regiji, poznata po kreativnim
+              koreografijama i atmosferi koju stvaraju na stadionu.
+            </p>
+            <p class="mb-6">
+              Njihov moto je "Jedna ljubav, jedan klub, jedno srce" što najbolje opisuje njihovu predanost
+              FK Sarajevo.
+            </p>
+          </div>
+        </div>
+        <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+          <span class="text-gray-600">Fotografija Horde Zla na tribini</span>
+        </div>
+      </div>
+
+      <!-- Fan Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="text-3xl font-bold text-fks-red mb-2">13,500</div>
+          <div class="text-gray-600">Prosječna posjećenost</div>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="text-3xl font-bold text-fks-red mb-2">1987</div>
+          <div class="text-gray-600">Godina osnivanja Horde Zla</div>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+          <div class="text-3xl font-bold text-fks-red mb-2">78</div>
+          <div class="text-gray-600">Godina postojanja kluba</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Club Values -->
+  <section class="py-12 bg-fks-red text-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-8">Naše vrijednosti</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="text-4xl mb-4">🏆</div>
+          <h3 class="text-xl font-bold mb-2">Pobjeda</h3>
+          <p class="text-red-200">Stremimo ka izvrsnosti u svakoj utakmici i nikad ne odustajemo od pobjede.</p>
+        </div>
+
+        <div>
+          <div class="text-4xl mb-4">❤️</div>
+          <h3 class="text-xl font-bold mb-2">Strast</h3>
+          <p class="text-red-200">Fuzbal je naša strast i ponosimo se našom dugom tradicijom.</p>
+        </div>
+
+        <div>
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="text-xl font-bold mb-2">Jedinstvo</h3>
+          <p class="text-red-200">Zajedno sa našim navijačima činimo jednu veliku FK Sarajevo porodicu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-fks-dark-red text-white py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center">
+        <p>&copy; 2024 FKSInfo. Sva prava zadržana.</p>
+        <p class="mt-2">Powered by FKSInfo team</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
