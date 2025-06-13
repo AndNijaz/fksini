@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upravljanje fan zonom - FKSInfo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <nav class="bg-fks-dark-red text-white w-64 min-h-screen p-4">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold">FKSInfo Admin</h1>
+        <p class="text-red-200 text-sm">FK Sarajevo CMS</p>
+      </div>
+
+      <ul class="space-y-2">
+        <li>
+          <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🏠</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="vijesti.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">📰</span>
+            <span>Vijesti</span>
+          </a>
+        </li>
+        <li>
+          <a href="igraci.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">👥</span>
+            <span>Igrači</span>
+          </a>
+        </li>
+        <li>
+          <a href="utakmice.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">⚽</span>
+            <span>Utakmice</span>
+          </a>
+        </li>
+        <li>
+          <a href="galerija.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">📸</span>
+            <span>Galerija</span>
+          </a>
+        </li>
+        <li>
+          <a href="fanzona.html" class="flex items-center space-x-3 p-3 rounded-lg bg-red-800 text-white">
+            <span class="text-xl">🛒</span>
+            <span>Fan zona</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="absolute bottom-4 left-4 right-4">
+        <div class="border-t border-red-800 pt-4">
+          <a href="../index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🌐</span>
+            <span>Idi na sajt</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Header -->
+      <header class="bg-white shadow-sm border-b border-gray-200 p-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <nav class="text-sm text-gray-500 mb-2">
+              <a href="index.html" class="hover:text-fks-red">Dashboard</a>
+              <span class="mx-2">></span>
+              <span class="text-gray-900">Fan zona</span>
+            </nav>
+            <h2 class="text-2xl font-bold text-gray-900">Upravljanje fan zonom</h2>
+            <p class="text-gray-600">Dodajte i upravljajte artiklima u shopu</p>
+          </div>
+          <button onclick="toggleProductForm()"
+            class="bg-fks-red text-white px-4 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+            + Dodaj proizvod
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Add Product Form (Hidden by default) -->
+        <div id="productForm" class="hidden mb-8 bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">Dodaj novi proizvod</h3>
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Naziv proizvoda *</label>
+                <input type="text"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="FK Sarajevo bordo dres">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Kategorija *</label>
+                <select
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+                  <option value="">Izaberite kategoriju</option>
+                  <option value="dresovi">Dresovi</option>
+                  <option value="aksesoari">Aksesoari</option>
+                  <option value="sapovi">Šapovi i kape</option>
+                  <option value="salonovi">Šal i torbe</option>
+                  <option value="suveniri">Suveniri</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Cijena (KM) *</label>
+                <input type="number" step="0.01" min="0"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="89.99">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Popust (%)</label>
+                <input type="number" min="0" max="100"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="0">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Količina na stanju *</label>
+                <input type="number" min="0"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="50">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Dostupne veličine</label>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-fks-red focus:ring-fks-red">
+                    <span class="ml-2 text-sm">XS</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-fks-red focus:ring-fks-red">
+                    <span class="ml-2 text-sm">S</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-fks-red focus:ring-fks-red">
+                    <span class="ml-2 text-sm">M</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-fks-red focus:ring-fks-red">
+                    <span class="ml-2 text-sm">L</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-fks-red focus:ring-fks-red">
+                    <span class="ml-2 text-sm">XL</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="checkbox" class="rounded border-gray-300 text-fks-red focus:ring-fks-red">
+                    <span class="ml-2 text-sm">XXL</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Status proizvoda</label>
+                <select
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+                  <option value="active">Aktivan</option>
+                  <option value="draft">Nacrt</option>
+                  <option value="out-of-stock">Rasprodano</option>
+                  <option value="discontinued">Obustavljen</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Opis proizvoda</label>
+              <textarea rows="4"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                placeholder="Detaljno opišite proizvod..."></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">URL slike proizvoda</label>
+              <input type="url"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                placeholder="https://...">
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <button type="submit"
+                class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+                Dodaj proizvod
+              </button>
+              <button type="button" onclick="toggleProductForm()"
+                class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                Otkaži
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Products Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">🛒</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Ukupno proizvoda</p>
+                <p class="text-2xl font-semibold text-gray-900">47</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">📈</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Aktivni proizvodi</p>
+                <p class="text-2xl font-semibold text-gray-900">42</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">⚠️</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Nisko stanje</p>
+                <p class="text-2xl font-semibold text-gray-900">8</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">❌</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Rasprodano</p>
+                <p class="text-2xl font-semibold text-gray-900">3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products List -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">Proizvodi fan zone</h3>
+          </div>
+
+          <!-- Filter -->
+          <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0">
+              <div class="flex items-center space-x-4">
+                <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option value="">Sve kategorije</option>
+                  <option value="dresovi">Dresovi</option>
+                  <option value="aksesoari">Aksesoari</option>
+                  <option value="sapovi">Šapovi i kape</option>
+                  <option value="suveniri">Suveniri</option>
+                </select>
+
+                <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option value="">Svi statusi</option>
+                  <option value="active">Aktivni</option>
+                  <option value="draft">Nacrti</option>
+                  <option value="out-of-stock">Rasprodano</option>
+                </select>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <input type="text" placeholder="Pretraži proizvode..."
+                  class="px-3 py-2 border border-gray-300 rounded-md text-sm w-64">
+                <button class="bg-gray-600 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700">
+                  Pretraži
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Table -->
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Proizvod
+                  </th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategorija
+                  </th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cijena</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stanje</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Akcije
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-12 h-12 bg-fks-red rounded-lg flex items-center justify-center text-white font-bold">
+                        👕
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">FK Sarajevo bordo dres</div>
+                        <div class="text-sm text-gray-500">Sezona 2024/25</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                      Dresovi
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">89,99 KM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">156 kom</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Aktivan
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-12 h-12 bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center text-gray-600 font-bold">
+                        👕
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">FK Sarajevo bijeli gostujući dres</div>
+                        <div class="text-sm text-gray-500">Sezona 2024/25</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                      Dresovi
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">89,99 KM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">87 kom</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Aktivan
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-12 h-12 bg-fks-red rounded-lg flex items-center justify-center text-white font-bold">
+                        🧣
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">Bordo šal sa grbom</div>
+                        <div class="text-sm text-gray-500">Horde Zla kolekcija</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">
+                      Aksesoari
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">35,00 KM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-600 font-medium">12 kom</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                      Nisko stanje
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-12 h-12 bg-fks-red rounded-lg flex items-center justify-center text-white font-bold">
+                        🧢
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">FK Sarajevo šapica</div>
+                        <div class="text-sm text-gray-500">Oficijelna kapa</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                      Šapovi
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">25,00 KM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 font-medium">0 kom</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                      Rasprodano
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function toggleProductForm() {
+      const form = document.getElementById('productForm');
+      form.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>

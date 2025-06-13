@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upravljanje galerijama - FKSInfo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <nav class="bg-fks-dark-red text-white w-64 min-h-screen p-4">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold">FKSInfo Admin</h1>
+        <p class="text-red-200 text-sm">FK Sarajevo CMS</p>
+      </div>
+
+      <ul class="space-y-2">
+        <li>
+          <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🏠</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="vijesti.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">📰</span>
+            <span>Vijesti</span>
+          </a>
+        </li>
+        <li>
+          <a href="igraci.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">👥</span>
+            <span>Igrači</span>
+          </a>
+        </li>
+        <li>
+          <a href="utakmice.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">⚽</span>
+            <span>Utakmice</span>
+          </a>
+        </li>
+        <li>
+          <a href="galerija.html" class="flex items-center space-x-3 p-3 rounded-lg bg-red-800 text-white">
+            <span class="text-xl">📸</span>
+            <span>Galerija</span>
+          </a>
+        </li>
+        <li>
+          <a href="fanzona.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🛒</span>
+            <span>Fan zona</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="absolute bottom-4 left-4 right-4">
+        <div class="border-t border-red-800 pt-4">
+          <a href="../index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🌐</span>
+            <span>Idi na sajt</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Header -->
+      <header class="bg-white shadow-sm border-b border-gray-200 p-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <nav class="text-sm text-gray-500 mb-2">
+              <a href="index.html" class="hover:text-fks-red">Dashboard</a>
+              <span class="mx-2">></span>
+              <span class="text-gray-900">Galerija</span>
+            </nav>
+            <h2 class="text-2xl font-bold text-gray-900">Upravljanje galerijama</h2>
+            <p class="text-gray-600">Dodajte i organizujte foto i video sadržaj</p>
+          </div>
+          <button onclick="toggleMediaForm()"
+            class="bg-fks-red text-white px-4 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+            + Dodaj medije
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Add Media Form (Hidden by default) -->
+        <div id="mediaForm" class="hidden mb-8 bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">Dodaj nove medije</h3>
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Naziv galerije *</label>
+                <input type="text"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="Utakmica vs Igman - 20.10.2024">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Tip medija *</label>
+                <select
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+                  <option value="">Izaberite tip</option>
+                  <option value="fotografije">Fotografije</option>
+                  <option value="video">Video</option>
+                  <option value="miješano">Miješano</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Kategorija</label>
+                <select
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+                  <option value="">Izaberite kategoriju</option>
+                  <option value="utakmica">Utakmica</option>
+                  <option value="trening">Trening</option>
+                  <option value="transfer">Transfer</option>
+                  <option value="navijaci">Navijači</option>
+                  <option value="ceremonija">Ceremonija</option>
+                  <option value="ostalo">Ostalo</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Datum događaja</label>
+                <input type="date"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Opis</label>
+              <textarea rows="3"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                placeholder="Kratak opis galerije..."></textarea>
+            </div>
+
+            <!-- File Upload Section -->
+            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6">
+              <div class="text-center">
+                <span class="text-4xl text-gray-400">📁</span>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">Dodaj fajlove</h3>
+                <p class="mt-1 text-sm text-gray-500">
+                  Povucite i otpustite fajlove ovdje ili
+                </p>
+                <button type="button"
+                  class="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-fks-red bg-fks-red bg-opacity-10 hover:bg-opacity-20">
+                  Izaberite fajlove
+                </button>
+                <p class="mt-2 text-xs text-gray-500">
+                  PNG, JPG, GIF do 10MB | MP4, MOV do 100MB
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <button type="submit"
+                class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+                Kreiraj galeriju
+              </button>
+              <button type="button" onclick="toggleMediaForm()"
+                class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                Otkaži
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Media Gallery -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">Sve galerije (356 medija)</h3>
+          </div>
+
+          <!-- Filter -->
+          <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0">
+              <div class="flex items-center space-x-4">
+                <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option value="">Svi tipovi</option>
+                  <option value="fotografije">Fotografije</option>
+                  <option value="video">Video</option>
+                  <option value="miješano">Miješano</option>
+                </select>
+
+                <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option value="">Sve kategorije</option>
+                  <option value="utakmica">Utakmica</option>
+                  <option value="trening">Trening</option>
+                  <option value="navijaci">Navijači</option>
+                </select>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <input type="text" placeholder="Pretraži galerije..."
+                  class="px-3 py-2 border border-gray-300 rounded-md text-sm w-64">
+                <button class="bg-gray-600 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700">
+                  Pretraži
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Grid -->
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Gallery Item 1 -->
+              <div class="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                  <div
+                    class="w-full h-48 bg-gradient-to-br from-fks-red to-fks-dark-red flex items-center justify-center">
+                    <span class="text-white text-4xl">📸</span>
+                  </div>
+                  <div class="absolute top-2 right-2">
+                    <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">24 fotografije</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">FK Sarajevo vs Igman Konjic</h4>
+                  <p class="text-sm text-gray-600 mb-3">Fotografije sa pobjede protiv Igman Konjica rezultatom 2:0</p>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>20.10.2024</span>
+                    <span>Utakmica</span>
+                  </div>
+                  <div class="mt-3 flex justify-between">
+                    <button class="text-indigo-600 hover:text-indigo-900 text-sm">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900 text-sm">Obriši</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gallery Item 2 -->
+              <div class="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                  <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                    <span class="text-white text-4xl">🎥</span>
+                  </div>
+                  <div class="absolute top-2 right-2">
+                    <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs">3 videa</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">Golovi sa utakmice</h4>
+                  <p class="text-sm text-gray-600 mb-3">Video izvještaj sa sva tri gola</p>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>20.10.2024</span>
+                    <span>Video</span>
+                  </div>
+                  <div class="mt-3 flex justify-between">
+                    <button class="text-indigo-600 hover:text-indigo-900 text-sm">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900 text-sm">Obriši</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gallery Item 3 -->
+              <div class="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                  <div
+                    class="w-full h-48 bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
+                    <span class="text-white text-4xl">👥</span>
+                  </div>
+                  <div class="absolute top-2 right-2">
+                    <span class="bg-purple-500 text-white px-2 py-1 rounded-full text-xs">18 fotografija</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">Horde Zla podrška</h4>
+                  <p class="text-sm text-gray-600 mb-3">Fotografije navijača tokom utakmice</p>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>20.10.2024</span>
+                    <span>Navijači</span>
+                  </div>
+                  <div class="mt-3 flex justify-between">
+                    <button class="text-indigo-600 hover:text-indigo-900 text-sm">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900 text-sm">Obriši</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gallery Item 4 -->
+              <div class="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                  <div
+                    class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center">
+                    <span class="text-white text-4xl">🏃</span>
+                  </div>
+                  <div class="absolute top-2 right-2">
+                    <span class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs">12 fotografija</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">Trening pred derbi</h4>
+                  <p class="text-sm text-gray-600 mb-3">Priprema tima za važnu utakmicu</p>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>15.10.2024</span>
+                    <span>Trening</span>
+                  </div>
+                  <div class="mt-3 flex justify-between">
+                    <button class="text-indigo-600 hover:text-indigo-900 text-sm">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900 text-sm">Obriši</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gallery Item 5 -->
+              <div class="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                  <div
+                    class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                    <span class="text-white text-4xl">🤝</span>
+                  </div>
+                  <div class="absolute top-2 right-2">
+                    <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">8 fotografija</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">Prezentacija Dal Varešanović</h4>
+                  <p class="text-sm text-gray-600 mb-3">Potpisivanje ugovora i predstavljање novog igrača</p>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>10.10.2024</span>
+                    <span>Transfer</span>
+                  </div>
+                  <div class="mt-3 flex justify-between">
+                    <button class="text-indigo-600 hover:text-indigo-900 text-sm">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900 text-sm">Obriši</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gallery Item 6 -->
+              <div class="bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 relative">
+                  <div
+                    class="w-full h-48 bg-gradient-to-br from-fks-red to-fks-dark-red flex items-center justify-center">
+                    <span class="text-white text-4xl">🏆</span>
+                  </div>
+                  <div class="absolute top-2 right-2">
+                    <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">15 fotografija</span>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-medium text-gray-900 mb-2">Proslava prvog mjesta</h4>
+                  <p class="text-sm text-gray-600 mb-3">Tim i navijači slave vrh tabele</p>
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>05.10.2024</span>
+                    <span>Ceremonija</span>
+                  </div>
+                  <div class="mt-3 flex justify-between">
+                    <button class="text-indigo-600 hover:text-indigo-900 text-sm">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900 text-sm">Obriši</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-8 flex justify-center">
+              <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
+                <button
+                  class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  Prethodna
+                </button>
+                <button
+                  class="bg-fks-red border-fks-red text-white relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                  1
+                </button>
+                <button
+                  class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                  2
+                </button>
+                <button
+                  class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                  3
+                </button>
+                <button
+                  class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  Sljedeća
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function toggleMediaForm() {
+      const form = document.getElementById('mediaForm');
+      form.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>

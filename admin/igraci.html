@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upravljanje igračima - FKSInfo Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <nav class="bg-fks-dark-red text-white w-64 min-h-screen p-4">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold">FKSInfo Admin</h1>
+        <p class="text-red-200 text-sm">FK Sarajevo CMS</p>
+      </div>
+
+      <ul class="space-y-2">
+        <li>
+          <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🏠</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="vijesti.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">📰</span>
+            <span>Vijesti</span>
+          </a>
+        </li>
+        <li>
+          <a href="igraci.html" class="flex items-center space-x-3 p-3 rounded-lg bg-red-800 text-white">
+            <span class="text-xl">👥</span>
+            <span>Igrači</span>
+          </a>
+        </li>
+        <li>
+          <a href="utakmice.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">⚽</span>
+            <span>Utakmice</span>
+          </a>
+        </li>
+        <li>
+          <a href="galerija.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">📸</span>
+            <span>Galerija</span>
+          </a>
+        </li>
+        <li>
+          <a href="fanzona.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🛒</span>
+            <span>Fan zona</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="absolute bottom-4 left-4 right-4">
+        <div class="border-t border-red-800 pt-4">
+          <a href="../index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🌐</span>
+            <span>Idi na sajt</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Header -->
+      <header class="bg-white shadow-sm border-b border-gray-200 p-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <nav class="text-sm text-gray-500 mb-2">
+              <a href="index.html" class="hover:text-fks-red">Dashboard</a>
+              <span class="mx-2">></span>
+              <span class="text-gray-900">Igrači</span>
+            </nav>
+            <h2 class="text-2xl font-bold text-gray-900">Upravljanje igračima</h2>
+            <p class="text-gray-600">Dodajte, uredite i upravljajte registrom igrača</p>
+          </div>
+          <button onclick="togglePlayerForm()"
+            class="bg-fks-red text-white px-4 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+            + Dodaj igrača
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Add Player Form (Hidden by default) -->
+        <div id="playerForm" class="hidden mb-8 bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">Dodaj novog igrača</h3>
+          <form class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Ime i prezime *</label>
+                <input type="text"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="Unesite ime i prezime">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Broj dresa *</label>
+                <input type="number" min="1" max="99"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="1-99">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Pozicija *</label>
+                <select
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+                  <option value="">Izaberite poziciju</option>
+                  <option value="golman">Golman</option>
+                  <option value="lijevi-bek">Lijevi bek</option>
+                  <option value="desni-bek">Desni bek</option>
+                  <option value="centralni-bek">Centralni bek</option>
+                  <option value="defanzivni-vezni">Defanzivni vezni</option>
+                  <option value="centralni-vezni">Centralni vezni</option>
+                  <option value="ofanzivni-vezni">Ofanzivni vezni</option>
+                  <option value="krilni-vezni">Krilni vezni</option>
+                  <option value="krilni-napadac">Krilni napadač</option>
+                  <option value="centralni-napadac">Centralni napadač</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Datum rođenja</label>
+                <input type="date"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Nacionalnost</label>
+                <input type="text"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="Bosna i Hercegovina">
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Visina (cm)</label>
+                <input type="number"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                  placeholder="180">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Biografija</label>
+              <textarea rows="3"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-fks-red"
+                placeholder="Kratka biografija igrača..."></textarea>
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <button type="submit"
+                class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
+                Dodaj igrača
+              </button>
+              <button type="button" onclick="togglePlayerForm()"
+                class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                Otkaži
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Players List -->
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">Registar igrača (28)</h3>
+          </div>
+
+          <!-- Filter -->
+          <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0">
+              <div class="flex items-center space-x-4">
+                <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option value="">Sve pozicije</option>
+                  <option value="golman">Golmani</option>
+                  <option value="odbrana">Odbrana</option>
+                  <option value="vezni">Vezni red</option>
+                  <option value="napad">Napad</option>
+                </select>
+
+                <select class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                  <option value="">Svi igrači</option>
+                  <option value="active">Aktivni</option>
+                  <option value="injured">Povrijeđeni</option>
+                  <option value="suspended">Suspendirani</option>
+                </select>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <input type="text" placeholder="Pretraži igrače..."
+                  class="px-3 py-2 border border-gray-300 rounded-md text-sm w-64">
+                <button class="bg-gray-600 text-white px-4 py-2 rounded-md text-sm hover:bg-gray-700">
+                  Pretraži
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Players Table -->
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Igrač</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Broj</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pozicija
+                  </th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Godine</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Nacionalnost</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Akcije
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-fks-red rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        VK
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">Vladan Kovačević</div>
+                        <div class="text-sm text-gray-500">28.05.1992</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div
+                      class="w-8 h-8 bg-fks-red rounded flex items-center justify-center text-white font-bold text-sm">
+                      1
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Golman</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">32</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">BiH</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Aktivan
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-fks-red rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        AR
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">Amar Rahmanović</div>
+                        <div class="text-sm text-gray-500">12.07.1994</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div
+                      class="w-8 h-8 bg-fks-red rounded flex items-center justify-center text-white font-bold text-sm">
+                      3
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Lijevi bek</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">30</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">BiH</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Aktivan
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-fks-red rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        DV
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">Dal Varešanović</div>
+                        <div class="text-sm text-gray-500">10.09.1991</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div
+                      class="w-8 h-8 bg-fks-red rounded flex items-center justify-center text-white font-bold text-sm">
+                      8
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Vezni igrač</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">33</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">BiH</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                      Novi
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div
+                        class="w-10 h-10 bg-fks-red rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        MA
+                      </div>
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">Mersudin Ahmetović</div>
+                        <div class="text-sm text-gray-500">02.06.1993</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div
+                      class="w-8 h-8 bg-fks-red rounded flex items-center justify-center text-white font-bold text-sm">
+                      9
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Napadač</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">31</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">BiH</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span
+                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      Aktivan
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Uredi</button>
+                    <button class="text-red-600 hover:text-red-900">Obriši</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function togglePlayerForm() {
+      const form = document.getElementById('playerForm');
+      form.classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>
