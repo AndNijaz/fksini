@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moderator Dashboard - FKSInfo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'fks-red': '#8B0000',
+            'fks-dark-red': '#660000',
+            'fks-light-red': '#B22222'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <nav class="bg-fks-dark-red text-white w-64 min-h-screen p-4">
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold">FKSInfo</h1>
+        <div class="flex items-center space-x-2 mt-2">
+          <span class="text-xl">👤</span>
+          <p class="text-red-200 text-sm">Moderator Panel</p>
+        </div>
+      </div>
+
+      <ul class="space-y-2">
+        <li>
+          <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg bg-red-800 text-white">
+            <span class="text-xl">🏠</span>
+            <span>Početna</span>
+          </a>
+        </li>
+        <li>
+          <a href="vijesti.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">📰</span>
+            <span>Vijesti</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="absolute bottom-4 left-4 right-4">
+        <div class="border-t border-red-800 pt-4">
+          <div class="flex items-center space-x-3 p-3 mb-2">
+            <div class="w-8 h-8 bg-red-800 rounded-full flex items-center justify-center text-white font-bold text-sm">
+              M
+            </div>
+            <div>
+              <p class="text-white text-sm font-medium">Marko Petrović</p>
+              <p class="text-red-200 text-xs">Moderator</p>
+            </div>
+          </div>
+          <a href="../index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🌐</span>
+            <span>Idi na sajt</span>
+          </a>
+          <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+            <span class="text-xl">🚪</span>
+            <span>Odjavi se</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Header -->
+      <header class="bg-white shadow-sm border-b border-gray-200 p-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900">Moderator Dashboard</h2>
+            <p class="text-gray-600">Upravljanje vijestima FKSInfo portala</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div class="text-sm text-gray-500">
+              Poslednje ažuriranje: 21. oktobar 2024, 16:45
+            </div>
+            <div class="w-8 h-8 bg-fks-red rounded-full flex items-center justify-center text-white font-bold">
+              M
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">📰</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Ukupno vijesti</p>
+                <p class="text-2xl font-semibold text-gray-900">124</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="text-green-600 text-sm">+8 ove sedmice</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">✅</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Objavljene vijesti</p>
+                <p class="text-2xl font-semibold text-gray-900">118</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="text-blue-600 text-sm">95% objavljeno</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-sm">📝</span>
+                </div>
+              </div>
+              <div class="ml-4">
+                <p class="text-sm font-medium text-gray-500">Nacrti</p>
+                <p class="text-2xl font-semibold text-gray-900">6</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="text-yellow-600 text-sm">Čeka objavu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Action & Recent Articles -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Quick Action -->
+          <div class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow p-6">
+              <h3 class="text-lg font-medium text-gray-900 mb-4">Brza akcija</h3>
+              <a href="vijesti.html"
+                class="w-full flex flex-col items-center p-6 border-2 border-dashed border-fks-red rounded-lg hover:bg-red-50 transition-colors group">
+                <span class="text-4xl mb-3 group-hover:scale-110 transition-transform">📝</span>
+                <span class="text-lg font-medium text-fks-red">Nova vijest</span>
+                <span class="text-sm text-gray-500 mt-1">Dodaj novi članak</span>
+              </a>
+            </div>
+
+            <!-- User Activity -->
+            <div class="bg-white rounded-lg shadow p-6 mt-6">
+              <h3 class="text-lg font-medium text-gray-900 mb-4">Vaša aktivnost</h3>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-600">Objavljeno danas</span>
+                  <span class="text-sm font-medium text-green-600">3 vijesti</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-600">Ove sedmice</span>
+                  <span class="text-sm font-medium text-blue-600">12 vijesti</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-600">Ovaj mjesec</span>
+                  <span class="text-sm font-medium text-gray-900">47 vijesti</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Articles -->
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-lg shadow">
+              <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg font-medium text-gray-900">Najnovije vijesti</h3>
+                  <a href="vijesti.html" class="text-fks-red hover:text-fks-dark-red text-sm font-medium">
+                    Vidi sve →
+                  </a>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="space-y-4">
+                  <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-medium text-gray-900 mb-1">VIDEO: Izvještaj sa utakmice FK Sarajevo -
+                        Igman</h4>
+                      <p class="text-sm text-gray-500 mb-2">Detaljni izvještaj sa pobjede Bordo tima rezultatom 2:0...
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                          <span>18.10.2024</span>
+                          <span>•</span>
+                          <span>Mirza Hodžić</span>
+                          <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full">Objavljeno</span>
+                        </div>
+                        <button class="text-fks-red hover:text-fks-dark-red text-xs font-medium">
+                          Uredi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-medium text-gray-900 mb-1">Dal Varešanović pojačanje za zimski dio</h4>
+                      <p class="text-sm text-gray-500 mb-2">Iskusni vezista potpisao je ugovor sa FK Sarajevo...</p>
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                          <span>15.10.2024</span>
+                          <span>•</span>
+                          <span>Amila Softić</span>
+                          <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full">Objavljeno</span>
+                        </div>
+                        <button class="text-fks-red hover:text-fks-dark-red text-xs font-medium">
+                          Uredi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-medium text-gray-900 mb-1">Trener Mulalić pred derbi</h4>
+                      <p class="text-sm text-gray-500 mb-2">Očekujemo tešku utakmicu, ali spremni smo za izazov...</p>
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                          <span>14.10.2024</span>
+                          <span>•</span>
+                          <span>Kemal Mršić</span>
+                          <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full">Nacrt</span>
+                        </div>
+                        <button class="text-fks-red hover:text-fks-dark-red text-xs font-medium">
+                          Uredi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-medium text-gray-900 mb-1">Analiza: Taktička priprema za Tuzla City</h4>
+                      <p class="text-sm text-gray-500 mb-2">Stručni tim analizirao je igru protivnika...</p>
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                          <span>12.10.2024</span>
+                          <span>•</span>
+                          <span>Marko Petrović</span>
+                          <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full">Objavljeno</span>
+                        </div>
+                        <button class="text-fks-red hover:text-fks-dark-red text-xs font-medium">
+                          Uredi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start space-x-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div class="flex-1 min-w-0">
+                      <h4 class="text-sm font-medium text-gray-900 mb-1">Horde Zla: Poziv na podršku</h4>
+                      <p class="text-sm text-gray-500 mb-2">Navijačka grupa poziva sve na masovnu podršku...</p>
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                          <span>10.10.2024</span>
+                          <span>•</span>
+                          <span>Marko Petrović</span>
+                          <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full">Objavljeno</span>
+                        </div>
+                        <button class="text-fks-red hover:text-fks-dark-red text-xs font-medium">
+                          Uredi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="mt-8 bg-white rounded-lg shadow">
+          <div class="p-6 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900">Status sistema</h3>
+          </div>
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900">Moderator pristup</p>
+                  <p class="text-sm text-gray-500">Aktivan i funkcionalan</p>
+                </div>
+              </div>
+
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900">Poslednji backup</p>
+                  <p class="text-sm text-gray-500">Prije 1 sat</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
