@@ -5,15 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FKSInfo - FK Sarajevo Fan Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'fks-red': '#8B0000',
-            'fks-dark-red': '#660000',
-            'fks-light-red': '#B22222'
+            'fks-red': '#450709',
+            'fks-dark-red': '#2d0405',
+            'fks-light-red': '#5a0a0d',
+            'text-dark': '#333333'
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+            'oswald': ['Oswald', 'ui-sans-serif', 'system-ui', 'sans-serif'],
           }
         }
       }
@@ -23,142 +33,334 @@
     .mobile-menu-toggle:checked~.mobile-menu {
       transform: translateX(0);
     }
+
+    .mobile-menu-toggle:checked+label .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-toggle:checked+label .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle:checked+label .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Ensure mobile menu is clickable */
+    .mobile-menu {
+      pointer-events: auto;
+    }
+
+    .mobile-overlay {
+      pointer-events: none;
+    }
+
+    .mobile-menu-toggle:checked~.mobile-overlay {
+      pointer-events: auto;
+    }
+
+    /* Navigation underline animation */
+    @keyframes slideIn {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    /* Add overlay when mobile menu is open */
+    .mobile-menu-toggle:checked~.mobile-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-gray-100 text-gray-900 font-sans antialiased">
   <!-- Navbar -->
-  <nav class="bg-fks-red text-white sticky top-0 z-50 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
+  <nav class="bg-fks-red text-white sticky top-0 z-[50] shadow-lg">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-2">
         <!-- Logo -->
-        <div class="flex items-center">
-          <h1 class="text-2xl font-bold">FKSInfo</h1>
+        <div class="flex items-center justify-center">
+          <img src="logo.svg" alt="FK Sarajevo Logo" class="w-[80%]">
         </div>
 
         <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-6">
-          <a href="index.html" class="hover:text-red-200 transition-colors">Početna</a>
-          <a href="vijesti.html" class="hover:text-red-200 transition-colors">Vijesti</a>
-          <a href="utakmice.html" class="hover:text-red-200 transition-colors">Utakmice</a>
-          <a href="klub.html" class="hover:text-red-200 transition-colors">Klub</a>
-          <a href="igraci.html" class="hover:text-red-200 transition-colors">Igrači</a>
-          <a href="multimedija.html" class="hover:text-red-200 transition-colors">Multimedija</a>
-          <a href="fan-zona.html" class="hover:text-red-200 transition-colors">Fan zona</a>
-          <a href="kontakt.html" class="hover:text-red-200 transition-colors">Kontakt</a>
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="index.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Početna
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="vijesti.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Vijesti
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="utakmice.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Utakmice
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="klub.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Klub
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="igraci.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Igrači
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="multimedija.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Multimedija
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="fan-zona.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Fan zona
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="kontakt.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Kontakt
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
         </div>
 
         <!-- Mobile hamburger -->
         <input type="checkbox" id="mobile-toggle" class="mobile-menu-toggle hidden">
-        <label for="mobile-toggle" class="md:hidden cursor-pointer">
-          <div class="w-6 h-6 flex flex-col justify-center items-center">
-            <span class="bg-white block h-0.5 w-6 mb-1"></span>
-            <span class="bg-white block h-0.5 w-6 mb-1"></span>
-            <span class="bg-white block h-0.5 w-6"></span>
+        <label for="mobile-toggle"
+          class="lg:hidden cursor-pointer p-2 rounded-md hover:bg-fks-light-red transition-colors">
+          <div class="w-6 h-6 flex flex-col justify-center items-center space-y-1">
+            <span class="hamburger-line bg-white block h-0.5 w-6 transform transition-transform duration-300"></span>
+            <span class="hamburger-line bg-white block h-0.5 w-6 transform transition-transform duration-300"></span>
+            <span class="hamburger-line bg-white block h-0.5 w-6 transform transition-transform duration-300"></span>
           </div>
         </label>
       </div>
     </div>
 
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-overlay fixed inset-0 bg-black bg-opacity-50 z-[60] lg:hidden opacity-0 invisible transition-all duration-300">
+    </div>
+
     <!-- Mobile Menu -->
     <div
-      class="mobile-menu fixed inset-y-0 left-0 w-64 bg-fks-dark-red transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-      <div class="flex flex-col p-4 space-y-4 mt-16">
-        <a href="index.html" class="hover:text-red-200 transition-colors py-2">Početna</a>
-        <a href="vijesti.html" class="hover:text-red-200 transition-colors py-2">Vijesti</a>
-        <a href="utakmice.html" class="hover:text-red-200 transition-colors py-2">Utakmice</a>
-        <a href="klub.html" class="hover:text-red-200 transition-colors py-2">Klub</a>
-        <a href="igraci.html" class="hover:text-red-200 transition-colors py-2">Igrači</a>
-        <a href="multimedija.html" class="hover:text-red-200 transition-colors py-2">Multimedija</a>
-        <a href="fan-zona.html" class="hover:text-red-200 transition-colors py-2">Fan zona</a>
-        <a href="kontakt.html" class="hover:text-red-200 transition-colors py-2">Kontakt</a>
+      class="mobile-menu fixed inset-y-0 left-0 w-72 bg-fks-dark-red transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden shadow-2xl z-[70]">
+      <div class="flex flex-col p-6 space-y-2 mt-20">
+        <!-- Mobile Logo Section -->
+        <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-fks-light-red">
+          <img src="logo.svg" alt="FK Sarajevo Logo" class="h-10 w-10">
+          <div>
+            <h2 class="text-lg font-bold">FKSInfo</h2>
+            <p class="text-xs text-red-200 uppercase">Informacije o radu</p>
+          </div>
+        </div>
+
+        <a href="index.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Početna</a>
+        <a href="vijesti.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Vijesti</a>
+        <a href="utakmice.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Utakmice</a>
+        <a href="klub.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Klub</a>
+        <a href="igraci.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Igrači</a>
+        <a href="multimedija.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Multimedija</a>
+        <a href="fan-zona.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Fan
+          zona</a>
+        <a href="kontakt.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Kontakt</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="bg-white py-8">
+  <section class="bg-white py-24">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Featured Article -->
-        <article class="lg:col-span-2 bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-80 bg-gray-300 relative">
-            <div class="absolute top-4 left-4">
-              <span class="bg-fks-red text-white px-3 py-1 rounded-full text-sm font-semibold">UTAKMICA</span>
+        <article
+          class="lg:col-span-2 bg-white shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow">
+          <div class="h-64 sm:h-80 lg:h-full relative bg-cover bg-center bg-no-repeat"
+            style="background-image: url('featured-article.png');">
+            <!-- Gradient Overlay -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[rgba(69,7,9,0.9)] via-[rgba(69,7,9,0.6)] to-[rgba(217,217,217,0)] sm:from-[rgba(69,7,9,0.8)] sm:via-[rgba(69,7,9,0.3)] sm:to-[rgba(217,217,217,0)]">
             </div>
-            <div class="absolute bottom-4 left-4 right-4 text-white">
-              <h2 class="text-3xl font-bold mb-2">VIDEO: Izvještaj sa utakmice FK Sarajevo - Igman</h2>
-              <p class="text-lg opacity-90">Detaljni izvještaj sa pobjede Bordo tima rezultatom 2:0 na Grbavici</p>
+
+            <!-- Category Badge -->
+            <div class="absolute top-4 left-4 z-10">
+              <span class="bg-fks-red text-white px-6 py-1 rounded-full text-sm uppercase">UTAKMICA</span>
+            </div>
+
+            <!-- Article Content -->
+            <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+              <h2 class="font-oswald text-xl sm:text-2xl md:text-3xl font-medium leading-tight text-white">VIDEO:
+                Izvještaj sa
+                utakmice FK Sarajevo - Igman</h2>
+              <p class="text-sm sm:text-base md:text-lg mb-2 text-white opacity-80 font-light">Detaljni izvještaj sa
+                pobjede Bordo
+                tima rezultatom 2:0 na Grbavici</p>
+
+              <!-- Author and Date -->
+              <div class="flex items-center space-x-3 sm:space-x-4 text-xs sm:text-sm text-white opacity-80 font-light">
+                <div class="flex items-center space-x-1.5 sm:space-x-2">
+                  <div
+                    class="w-5 h-5 sm:w-6 sm:h-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-user-round-icon lucide-user-round">
+                      <circle cx="12" cy="8" r="5" />
+                      <path d="M20 21a8 8 0 0 0-16 0" />
+                    </svg>
+                  </div>
+                  <span>John Doe</span>
+                </div>
+                <div class="flex items-center space-x-1.5 sm:space-x-2">
+                  <div
+                    class="w-5 h-5 sm:w-6 sm:h-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-calendar-icon lucide-calendar">
+                      <path d="M8 2v4" />
+                      <path d="M16 2v4" />
+                      <rect width="18" height="18" x="3" y="4" rx="2" />
+                      <path d="M3 10h18" />
+                    </svg>
+                  </div>
+                  <span>14.05.2025</span>
+                </div>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- Recent Articles Sidebar -->
-        <aside class="space-y-4">
-          <div class="bg-white rounded-lg shadow-lg p-4">
-            <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs">TRANSFER</span>
-            <h3 class="font-bold mt-2 mb-1">Dal Varešanović pojačanje za zimski dio sezone</h3>
-            <p class="text-sm text-gray-600">Iskusni vezista potpisao je ugovor do kraja sezone...</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-lg p-4">
-            <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">INTERVJU</span>
-            <h3 class="font-bold mt-2 mb-1">Trener Mulalić pred derbi</h3>
-            <p class="text-sm text-gray-600">Očekujemo tešku utakmicu, ali spremni smo...</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-lg p-4">
-            <span class="bg-orange-600 text-white px-2 py-1 rounded text-xs">IZJAVA</span>
-            <h3 class="font-bold mt-2 mb-1">Kapiten poziva navijače na podršku</h3>
-            <p class="text-sm text-gray-600">Potrebna nam je maksimalna podrška sa tribina...</p>
-          </div>
+        <aside class="space-y-2">
+          <article
+            class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 hover:border-gray-200">
+            <div class="p-6">
+              <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">TRANSFER</span>
+              <h3
+                class="font-oswald font-semibold text-text-dark mt-2 text-lg mb-1 leading-tight hover:text-fks-red transition-colors">
+                Dal Varešanović pojačanje za zimski dio
+                sezone</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">Iskusni vezista potpisao je ugovor do kraja sezone...</p>
+            </div>
+          </article>
+
+          <article
+            class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 hover:border-gray-200">
+            <div class="p-6">
+              <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">INTERVJU</span>
+              <h3
+                class="font-oswald font-semibold text-text-dark mt-2 mb-1 text-lg leading-tight hover:text-fks-red transition-colors">
+                Trener Mulalić pred derbi</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">Očekujemo tešku utakmicu, ali spremni smo...</p>
+            </div>
+          </article>
+
+          <article
+            class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 hover:border-gray-200">
+            <div class="p-6">
+              <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">IZJAVA</span>
+              <h3
+                class="font-oswald font-semibold text-text-dark mt-2 mb-1 text-lg leading-tight hover:text-fks-red transition-colors">
+                Kapiten poziva navijače na podršku</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">Potrebna nam je maksimalna podrška sa tribina...</p>
+            </div>
+          </article>
         </aside>
       </div>
     </div>
   </section>
 
   <!-- News Grid Section -->
-  <section id="vijesti" class="py-12 bg-gray-50">
+  <section id="vijesti" class="py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-fks-red">Vijesti</h2>
+        <h2 class="text-3xl font-bold text-fks-red font-oswald">Vijesti</h2>
         <button class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
           Vidi više
         </button>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gray-300"></div>
-          <div class="p-4">
-            <span class="bg-blue-600 text-white px-2 py-1 rounded text-xs">TRANSFERI</span>
-            <h3 class="font-bold mt-2 mb-2">Novo pojačanje stiglo na Grbavicu</h3>
-            <p class="text-sm text-gray-600">Klub je službeno potvrdio dolazak novog igrača koji će...</p>
+        <article class="bg-white shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+          <div class="h-48 overflow-hidden">
+            <img src="vijesti-1.png" alt="Novo pojačanje stiglo na Kosevo" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4 pb-0">
+            <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">TRANSFER</span>
+            <h3
+              class="font-oswald font-semibold text-text-dark mt-2 mb-1 text-lg leading-tight hover:text-fks-red transition-colors">
+              Novo pojačanje stiglo na Kosevo</h3>
+            <p class="text-gray-600 text-xs leading-relaxed text-justify">Vivamus fringilla tristique iaculis. Mauris
+              eleifend fermentum rhoncus. Ut
+              et dignissim metus. Maecenas elit magna, convallis et ultrices pretium, lacinia in urna.</p>
           </div>
         </article>
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gray-300"></div>
+        <article class="bg-white shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+          <div class="h-48 overflow-hidden">
+            <img src="vijesti-2.png" alt="Razgovor sa kapitenom tima" class="w-full h-full object-cover">
+          </div>
           <div class="p-4">
-            <span class="bg-green-600 text-white px-2 py-1 rounded text-xs">INTERVJUI</span>
-            <h3 class="font-bold mt-2 mb-2">Razgovor sa kapitenom tima</h3>
-            <p class="text-sm text-gray-600">Ekskluzivni intervju sa vođom momčadi o ciljevima...</p>
+            <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">INTERVJU</span>
+            <h3
+              class="font-oswald font-semibold text-text-dark mt-2 mb-1 text-lg leading-tight hover:text-fks-red transition-colors">
+              Razgovor sa kapitenom tima</h3>
+            <p class="text-gray-600 text-xs leading-relaxed text-justify">Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Cras fermentum ex
+              libero, ut facilisis ex lobortis vitae. Praesent vitae arcu ut est ultrices condimentum.</p>
           </div>
         </article>
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gray-300"></div>
+        <article class="bg-white shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+          <div class="h-48 overflow-hidden">
+            <img src="vijesti-3.png" alt="Trener najavljuje pripreme" class="w-full h-full object-cover">
+          </div>
           <div class="p-4">
-            <span class="bg-orange-600 text-white px-2 py-1 rounded text-xs">IZJAVE</span>
-            <h3 class="font-bold mt-2 mb-2">Trener najavljuje pripreme</h3>
-            <p class="text-sm text-gray-600">Stručni štab priprema plan za nadolazeći period...</p>
+            <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">IZJAVE</span>
+            <h3
+              class="font-oswald font-semibold text-text-dark mt-2 mb-1 text-lg leading-tight hover:text-fks-red transition-colors">
+              Trener najavljuje pripreme</h3>
+            <p class="text-gray-600 text-xs leading-relaxed text-justify">Phasellus in purus vestibulum, congue odio
+              eget, congue arcu. Suspendisse
+              imperdiet fermentum diam eget consectetur.</p>
           </div>
         </article>
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gray-300"></div>
+        <article class="bg-white shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+          <div class="h-48 overflow-hidden">
+            <img src="vijesti-4.png" alt="Mladi talenti u usponu" class="w-full h-full object-cover">
+          </div>
           <div class="p-4">
-            <span class="bg-purple-600 text-white px-2 py-1 rounded text-xs">AKADEMIJA</span>
-            <h3 class="font-bold mt-2 mb-2">Mladi talenti u usponu</h3>
-            <p class="text-sm text-gray-600">Omladinski pogon nastavlja sa odličnim rezultatima...</p>
+            <span class="bg-fks-red text-white px-4 py-1 rounded-full text-xs uppercase">AKADEMIJA</span>
+            <h3
+              class="font-oswald font-semibold text-text-dark mt-2 mb-1 text-lg leading-tight hover:text-fks-red transition-colors">
+              Mladi talenti u usponu</h3>
+            <p class="text-gray-600 text-xs leading-relaxed text-justify">Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Cras fermentum ex
+              libero, ut facilisis ex lobortis vitae. Praesent vitae arcu ut est ultrices condimentum.</p>
           </div>
         </article>
       </div>
@@ -583,24 +785,64 @@
 
 <script>
   // Mobile menu functionality
-  document.getElementById('mobile-toggle').addEventListener('change', function () {
-    if (this.checked) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  });
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function (e) {
+  document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.getElementById('mobile-toggle');
     const menu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.mobile-overlay');
     const label = document.querySelector('label[for="mobile-toggle"]');
 
-    if (!menu.contains(e.target) && !label.contains(e.target) && toggle.checked) {
-      toggle.checked = false;
-      document.body.style.overflow = '';
+    // Toggle mobile menu
+    if (toggle) {
+      toggle.addEventListener('change', function () {
+        if (this.checked) {
+          document.body.style.overflow = 'hidden';
+          // Force menu to show
+          menu.style.transform = 'translateX(0)';
+          overlay.style.opacity = '1';
+          overlay.style.visibility = 'visible';
+        } else {
+          document.body.style.overflow = '';
+          // Force menu to hide
+          menu.style.transform = 'translateX(-100%)';
+          overlay.style.opacity = '0';
+          overlay.style.visibility = 'hidden';
+        }
+      });
     }
+
+    // Close mobile menu when clicking overlay
+    if (overlay) {
+      overlay.addEventListener('click', function () {
+        toggle.checked = false;
+        document.body.style.overflow = '';
+        menu.style.transform = 'translateX(-100%)';
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+      });
+    }
+
+    // Close mobile menu when clicking menu links
+    const menuLinks = menu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        toggle.checked = false;
+        document.body.style.overflow = '';
+        menu.style.transform = 'translateX(-100%)';
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+      });
+    });
+
+    // Close mobile menu with Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.checked) {
+        toggle.checked = false;
+        document.body.style.overflow = '';
+        menu.style.transform = 'translateX(-100%)';
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+      }
+    });
   });
 </script>
 
