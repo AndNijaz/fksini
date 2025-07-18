@@ -46,6 +46,26 @@
       transform: rotate(-45deg) translate(7px, -6px);
     }
 
+    /* Custom Scrollbar Styling */
+    .photo-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .photo-gallery::-webkit-scrollbar-track {
+      background: rgba(69, 7, 9, 0.2);
+      border-radius: 10px;
+    }
+
+    .photo-gallery::-webkit-scrollbar-thumb {
+      background: #2d0405;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .photo-gallery::-webkit-scrollbar-thumb:hover {
+      background: #1a0203;
+    }
+
     /* Ensure mobile menu is clickable */
     .mobile-menu {
       pointer-events: auto;
@@ -75,6 +95,46 @@
       opacity: 1;
       visibility: visible;
     }
+
+    /* Custom Radio Button Styling */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    input[type="radio"]:checked {
+      border-color: #450709;
+      background-color: #450709;
+    }
+
+    input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    input[type="radio"]:hover {
+      border-color: #5a0a0d;
+    }
+
+    input[type="radio"]:focus {
+      box-shadow: 0 0 0 3px rgba(69, 7, 9, 0.2);
+    }
   </style>
 </head>
 
@@ -102,21 +162,9 @@
             <span
               class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
           </a>
-          <a href="utakmice.html"
-            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
-            Utakmice
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
-          </a>
           <a href="klub.html"
             class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
             Klub
-            <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a href="igraci.html"
-            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
-            Igrači
             <span
               class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -175,12 +223,8 @@
           class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Početna</a>
         <a href="vijesti.html"
           class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Vijesti</a>
-        <a href="utakmice.html"
-          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Utakmice</a>
         <a href="klub.html"
           class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Klub</a>
-        <a href="igraci.html"
-          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Igrači</a>
         <a href="multimedija.html"
           class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Multimedija</a>
         <a href="fan-zona.html"
@@ -368,19 +412,29 @@
   </section>
 
   <!-- Multimedija Section -->
-  <section id="multimedija" class="py-12 bg-white">
+  <section id="multimedija" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Multimedija</h2>
+      <h2 class="text-3xl font-bold text-fks-red font-oswald mb-8">Multimedija</h2>
 
       <!-- Match Photos -->
       <div class="mb-8">
         <h3 class="text-xl font-semibold mb-4">Fotografije sa utakmica</h3>
-        <div class="flex overflow-x-auto space-x-4 pb-4">
-          <div class="flex-none w-64 h-40 bg-gray-300 rounded-lg"></div>
-          <div class="flex-none w-64 h-40 bg-gray-300 rounded-lg"></div>
-          <div class="flex-none w-64 h-40 bg-gray-300 rounded-lg"></div>
-          <div class="flex-none w-64 h-40 bg-gray-300 rounded-lg"></div>
-          <div class="flex-none w-64 h-40 bg-gray-300 rounded-lg"></div>
+        <div class="flex overflow-x-auto space-x-4 pb-4 photo-gallery">
+          <div class="flex-none w-64 h-40 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <img src="vijesti-1.png" alt="Fotografija sa utakmice" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-none w-64 h-40 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <img src="vijesti-2.png" alt="Fotografija sa utakmice" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-none w-64 h-40 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <img src="vijesti-3.png" alt="Fotografija sa utakmice" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-none w-64 h-40 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <img src="vijesti-4.png" alt="Fotografija sa utakmice" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-none w-64 h-40 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <img src="vijesti-1.png" alt="Fotografija sa utakmice" class="w-full h-full object-cover">
+          </div>
         </div>
       </div>
 
@@ -388,304 +442,118 @@
       <div class="mb-8">
         <h3 class="text-xl font-semibold mb-4">Video izvještaji</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-gray-100 rounded-lg p-4">
-            <div class="h-32 bg-gray-300 rounded mb-3 flex items-center justify-center">
-              <span class="text-gray-600">▶️ Video</span>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <div
+              class="h-48 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 relative cursor-pointer">
+              <img src="vijesti-1.png" alt="Video: Golovi sa utakmice" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                  <svg class="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
             </div>
-            <h4 class="font-semibold">Golovi sa utakmice</h4>
-            <p class="text-sm text-gray-600">FK Sarajevo 2:0 Igman</p>
-          </div>
-          <div class="bg-gray-100 rounded-lg p-4">
-            <div class="h-32 bg-gray-300 rounded mb-3 flex items-center justify-center">
-              <span class="text-gray-600">▶️ Video</span>
-            </div>
-            <h4 class="font-semibold">Intervju poslije utakmice</h4>
-            <p class="text-sm text-gray-600">Trener Mulalić</p>
-          </div>
-          <div class="bg-gray-100 rounded-lg p-4">
-            <div class="h-32 bg-gray-300 rounded mb-3 flex items-center justify-center">
-              <span class="text-gray-600">▶️ Video</span>
-            </div>
-            <h4 class="font-semibold">Atmosfera sa tribina</h4>
-            <p class="text-sm text-gray-600">Horde Zla podrška</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Players Section -->
-  <section id="igraci" class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Igrački kadar</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Goalkeepers -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-fks-red">Golmani</h3>
-          <div class="space-y-3">
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Vladan Kovačević</div>
-              <div class="text-sm text-gray-600">#1 • 28.05.1992</div>
-            </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Nemanja Belić</div>
-              <div class="text-sm text-gray-600">#12 • 15.03.1995</div>
+            <div class="mt-3">
+              <h4 class="font-oswald font-semibold text-text-dark text-lg">Golovi sa utakmice</h4>
+              <p class="text-sm text-gray-600">FK Sarajevo 2:0 Igman</p>
             </div>
           </div>
-        </div>
-
-        <!-- Defense -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-fks-red">Odbrana</h3>
-          <div class="space-y-3">
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Amar Rahmanović</div>
-              <div class="text-sm text-gray-600">#3 • 12.07.1994</div>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <div
+              class="h-48 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 relative cursor-pointer">
+              <img src="vijesti-2.png" alt="Video: Intervju poslije utakmice" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                  <svg class="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
             </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Jusuf Gazibegović</div>
-              <div class="text-sm text-gray-600">#5 • 20.11.1996</div>
-            </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Matej Mitrović</div>
-              <div class="text-sm text-gray-600">#15 • 08.04.1993</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Midfield -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-fks-red">Vezni red</h3>
-          <div class="space-y-3">
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Dal Varešanović</div>
-              <div class="text-sm text-gray-600">#8 • 10.09.1991</div>
-            </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Mirza Mustafić</div>
-              <div class="text-sm text-gray-600">#6 • 25.01.1995</div>
-            </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Benjamin Tatar</div>
-              <div class="text-sm text-gray-600">#20 • 18.12.1997</div>
+            <div class="mt-3">
+              <h4 class="font-oswald font-semibold text-text-dark text-lg">Intervju poslije utakmice</h4>
+              <p class="text-sm text-gray-600">Trener Mulalić</p>
             </div>
           </div>
-        </div>
-
-        <!-- Attack -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4 text-fks-red">Napad</h3>
-          <div class="space-y-3">
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Mersudin Ahmetović</div>
-              <div class="text-sm text-gray-600">#9 • 02.06.1993</div>
+          <div class="bg-gray-100 p-4 rounded-lg">
+            <div
+              class="h-48 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 relative cursor-pointer">
+              <img src="vijesti-3.png" alt="Video: Atmosfera sa tribina" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-white bg-opacity-90 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all duration-300">
+                  <svg class="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
             </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Ivan Lendrić</div>
-              <div class="text-sm text-gray-600">#11 • 14.08.1994</div>
-            </div>
-            <div class="bg-white p-3 rounded-lg shadow">
-              <div class="font-semibold">Andrej Đokanović</div>
-              <div class="text-sm text-gray-600">#7 • 30.04.1996</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Matches Section -->
-  <section id="utakmice" class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Utakmice</h2>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Next Match -->
-        <div class="bg-fks-red text-white rounded-lg p-6">
-          <h3 class="text-xl font-semibold mb-4">Sljedeća utakmica</h3>
-          <div class="text-center">
-            <div class="text-2xl font-bold mb-2">FK Sarajevo vs Tuzla City</div>
-            <div class="text-lg mb-2">Subota, 25. listopad 2024</div>
-            <div class="text-lg">15:00 - Stadion Grbavica</div>
-            <div class="mt-4">
-              <span class="bg-white text-fks-red px-4 py-2 rounded-full font-semibold">Premier Liga BiH</span>
+            <div class="mt-3">
+              <h4 class="font-oswald font-semibold text-text-dark text-lg">Atmosfera sa tribina</h4>
+              <p class="text-sm text-gray-600">Horde Zla podrška</p>
             </div>
           </div>
-        </div>
-
-        <!-- Last Match -->
-        <div class="bg-green-600 text-white rounded-lg p-6">
-          <h3 class="text-xl font-semibold mb-4">Posljednja utakmica</h3>
-          <div class="text-center">
-            <div class="text-2xl font-bold mb-2">FK Sarajevo 2:0 Igman</div>
-            <div class="text-lg mb-2">Subota, 18. listopad 2024</div>
-            <div class="text-lg">Stadion Grbavica</div>
-            <div class="mt-4 text-sm">
-              <div>⚽ Ahmetović 34', Lendrić 78'</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- League Table -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Premier Liga BiH - Tabela</h2>
-
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full">
-            <thead class="bg-fks-red text-white">
-              <tr>
-                <th class="px-4 py-3 text-left">#</th>
-                <th class="px-4 py-3 text-left">Klub</th>
-                <th class="px-4 py-3 text-center">U</th>
-                <th class="px-4 py-3 text-center">P</th>
-                <th class="px-4 py-3 text-center">N</th>
-                <th class="px-4 py-3 text-center">I</th>
-                <th class="px-4 py-3 text-center">Bodovi</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b bg-red-50">
-                <td class="px-4 py-3 font-bold">1.</td>
-                <td class="px-4 py-3 font-bold">FK Sarajevo</td>
-                <td class="px-4 py-3 text-center">12</td>
-                <td class="px-4 py-3 text-center">8</td>
-                <td class="px-4 py-3 text-center">3</td>
-                <td class="px-4 py-3 text-center">1</td>
-                <td class="px-4 py-3 text-center font-bold">27</td>
-              </tr>
-              <tr class="border-b">
-                <td class="px-4 py-3">2.</td>
-                <td class="px-4 py-3">Borac Banja Luka</td>
-                <td class="px-4 py-3 text-center">12</td>
-                <td class="px-4 py-3 text-center">7</td>
-                <td class="px-4 py-3 text-center">4</td>
-                <td class="px-4 py-3 text-center">1</td>
-                <td class="px-4 py-3 text-center">25</td>
-              </tr>
-              <tr class="border-b">
-                <td class="px-4 py-3">3.</td>
-                <td class="px-4 py-3">Zrinjski Mostar</td>
-                <td class="px-4 py-3 text-center">12</td>
-                <td class="px-4 py-3 text-center">6</td>
-                <td class="px-4 py-3 text-center">5</td>
-                <td class="px-4 py-3 text-center">1</td>
-                <td class="px-4 py-3 text-center">23</td>
-              </tr>
-              <tr class="border-b">
-                <td class="px-4 py-3">4.</td>
-                <td class="px-4 py-3">Željezničar</td>
-                <td class="px-4 py-3 text-center">12</td>
-                <td class="px-4 py-3 text-center">5</td>
-                <td class="px-4 py-3 text-center">4</td>
-                <td class="px-4 py-3 text-center">3</td>
-                <td class="px-4 py-3 text-center">19</td>
-              </tr>
-              <tr class="border-b">
-                <td class="px-4 py-3">5.</td>
-                <td class="px-4 py-3">Tuzla City</td>
-                <td class="px-4 py-3 text-center">12</td>
-                <td class="px-4 py-3 text-center">4</td>
-                <td class="px-4 py-3 text-center">5</td>
-                <td class="px-4 py-3 text-center">3</td>
-                <td class="px-4 py-3 text-center">17</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Bordo Vremeplov -->
-  <section class="py-12 bg-white">
+  <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Bordo Vremeplov</h2>
+      <h2 class="text-3xl font-bold text-fks-red font-oswald mb-8">Bordo Vremeplov</h2>
 
       <div class="relative">
-        <div class="flex overflow-x-auto space-x-8 pb-4">
-          <div class="flex-none w-80 bg-gray-100 rounded-lg p-6">
-            <div class="text-2xl font-bold text-fks-red mb-2">1985</div>
-            <h3 class="font-semibold mb-2">Osnivanje kluba</h3>
-            <p class="text-sm text-gray-600">FK Sarajevo osnovan je 24. oktobra 1946. godine kao rezultat spajanja
-              nekoliko sarajevskih klubova.</p>
+        <div class="flex overflow-x-auto space-x-8 pb-4 photo-gallery">
+          <div
+            class="flex-none w-80 bg-gray-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 relative overflow-hidden">
+            <div class="text-6xl font-bold text-fks-red mb-2 font-oswald">1985</div>
+            <h3 class="text-2xl font-semibold text-text-dark mb-3 font-oswald">Osnivanje kluba</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Vivamus fringilla tristique luctus. Mauris eleifend
+              fermentum efficitur. Ut et dignissim metus. Maecenas elit magna, convallis et ultrices pretium, lacinia in
+              urna.</p>
+            <div
+              class="absolute -bottom-12 -right-8 text-9xl font-bold text-gray-300 opacity-30 select-none pointer-events-none">
+              1985</div>
           </div>
 
-          <div class="flex-none w-80 bg-gray-100 rounded-lg p-6">
-            <div class="text-2xl font-bold text-fks-red mb-2">1967</div>
-            <h3 class="font-semibold mb-2">Prvi naslov prvaka</h3>
-            <p class="text-sm text-gray-600">Klub osvaja svoj prvi naslov prvaka Jugoslavije u nezaboravnoj sezoni.</p>
+          <div
+            class="flex-none w-80 bg-gray-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 relative overflow-hidden">
+            <div class="text-6xl font-bold text-fks-red mb-2 font-oswald">1967</div>
+            <h3 class="text-2xl font-semibold text-text-dark mb-3 font-oswald">Prvi naslov prvaka</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Vivamus fringilla tristique luctus. Mauris eleifend
+              fermentum efficitur. Ut et dignissim metus. Maecenas elit magna, convallis et ultrices pretium, lacinia in
+              urna.</p>
+            <div
+              class="absolute -bottom-12 -right-8 text-9xl font-bold text-gray-300 opacity-30 select-none pointer-events-none">
+              1967</div>
           </div>
 
-          <div class="flex-none w-80 bg-gray-100 rounded-lg p-6">
-            <div class="text-2xl font-bold text-fks-red mb-2">1985</div>
-            <h3 class="font-semibold mb-2">Kup pobjednika kupova</h3>
-            <p class="text-sm text-gray-600">Historijski uspjeh u evropskim takmičenjima - finale Kupa pobjednika
-              kupova.</p>
+          <div
+            class="flex-none w-80 bg-gray-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 relative overflow-hidden">
+            <div class="text-6xl font-bold text-fks-red mb-2 font-oswald">1985</div>
+            <h3 class="text-2xl font-semibold text-text-dark mb-3 font-oswald">Kup pobjednika kupova</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Vivamus fringilla tristique luctus. Mauris eleifend
+              fermentum efficitur. Ut et dignissim metus. Maecenas elit magna, convallis et ultrices pretium, lacinia in
+              urna.</p>
+            <div
+              class="absolute -bottom-12 -right-8 text-9xl font-bold text-gray-300 opacity-30 select-none pointer-events-none">
+              1985</div>
           </div>
 
-          <div class="flex-none w-80 bg-gray-100 rounded-lg p-6">
-            <div class="text-2xl font-bold text-fks-red mb-2">1992</div>
-            <h3 class="font-semibold mb-2">Rat i opstanak</h3>
-            <p class="text-sm text-gray-600">Teški dani tokom rata, ali klub nastavlja da postoji i igra.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Fan Zone / Shop -->
-  <section id="fan-zona" class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Fan zona</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-fks-red"></div>
-          <div class="p-4">
-            <h3 class="font-semibold mb-2">Bordo dres 2024/25</h3>
-            <p class="text-fks-red font-bold text-lg">89 KM</p>
-            <button class="w-full bg-fks-red text-white py-2 rounded mt-2 hover:bg-fks-dark-red transition-colors">
-              Dodaj u korpu
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gray-600"></div>
-          <div class="p-4">
-            <h3 class="font-semibold mb-2">Šal FK Sarajevo</h3>
-            <p class="text-fks-red font-bold text-lg">25 KM</p>
-            <button class="w-full bg-fks-red text-white py-2 rounded mt-2 hover:bg-fks-dark-red transition-colors">
-              Dodaj u korpu
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-white border-2 border-fks-red"></div>
-          <div class="p-4">
-            <h3 class="font-semibold mb-2">Gostujući dres</h3>
-            <p class="text-fks-red font-bold text-lg">89 KM</p>
-            <button class="w-full bg-fks-red text-white py-2 rounded mt-2 hover:bg-fks-dark-red transition-colors">
-              Dodaj u korpu
-            </button>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-fks-red"></div>
-          <div class="p-4">
-            <h3 class="font-semibold mb-2">FK Sarajevo kačket</h3>
-            <p class="text-fks-red font-bold text-lg">35 KM</p>
-            <button class="w-full bg-fks-red text-white py-2 rounded mt-2 hover:bg-fks-dark-red transition-colors">
-              Dodaj u korpu
-            </button>
+          <div
+            class="flex-none w-80 bg-gray-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8 relative overflow-hidden">
+            <div class="text-6xl font-bold text-fks-red mb-2 font-oswald">1992</div>
+            <h3 class="text-2xl font-semibold text-text-dark mb-3 font-oswald">Rat i opstanak</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">Vivamus fringilla tristique luctus. Mauris eleifend
+              fermentum efficitur. Ut et dignissim metus. Maecenas elit magna, convallis et ultrices pretium, lacinia in
+              urna.</p>
+            <div
+              class="absolute -bottom-12 -right-8 text-9xl font-bold text-gray-300 opacity-30 select-none pointer-events-none">
+              1992</div>
           </div>
         </div>
       </div>
@@ -695,89 +563,142 @@
   <!-- Poll Section -->
   <section class="py-12 bg-white">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Anketa</h2>
+      <h2 class="text-3xl font-bold text-fks-red mb-8 font-oswald">Navijačka anketa</h2>
 
-      <div class="bg-gray-50 rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-4">Šta očekujete od ove sezone?</h3>
+      <div class="bg-gray-100 rounded-lg p-8">
+        <h3 class="text-xl font-semibold mb-6 text-gray-900">Koji je vaš omiljeni trenutni igrač FK Sarajevo?</h3>
 
-        <form class="space-y-3">
-          <label class="flex items-center space-x-3 cursor-pointer">
-            <input type="radio" name="poll" value="prvak" class="text-fks-red">
-            <span>Osvajanje titule prvaka</span>
-            <span class="ml-auto text-sm text-gray-600">45%</span>
-          </label>
+        <div class="space-y-4" id="poll-options">
+          <!-- Option 1 -->
+          <div class="flex items-center">
+            <div class="w-2/3 flex items-center">
+              <input type="radio" name="favorite-player" value="mersudin" class="text-fks-red focus:ring-fks-red mr-3"
+                data-percentage="35">
+              <span class="text-gray-600 font-medium">Mersudin Ahmetović</span>
+            </div>
+            <div class="w-1/3 flex items-center justify-end space-x-3">
+              <div class="w-full max-w-32">
+                <div class="w-full bg-[rgba(69,7,9,0.2)] rounded-full h-3">
+                  <div class="bg-[#2d0405] h-3 rounded-full transition-all duration-500" style="width: 35%"></div>
+                </div>
+              </div>
+              <span class="text-sm text-gray-600 font-medium w-8 text-right">35%</span>
+            </div>
+          </div>
 
-          <label class="flex items-center space-x-3 cursor-pointer">
-            <input type="radio" name="poll" value="europa" class="text-fks-red">
-            <span>Plasman u evropska takmičenja</span>
-            <span class="ml-auto text-sm text-gray-600">30%</span>
-          </label>
+          <!-- Option 2 -->
+          <div class="flex items-center">
+            <div class="w-2/3 flex items-center">
+              <input type="radio" name="favorite-player" value="dal" class="text-fks-red focus:ring-fks-red mr-3"
+                data-percentage="28">
+              <span class="text-gray-600 font-medium">Dal Varešanović</span>
+            </div>
+            <div class="w-1/3 flex items-center justify-end space-x-3">
+              <div class="w-full max-w-32">
+                <div class="w-full bg-[rgba(69,7,9,0.2)] rounded-full h-3">
+                  <div class="bg-[#2d0405] h-3 rounded-full transition-all duration-500" style="width: 28%"></div>
+                </div>
+              </div>
+              <span class="text-sm text-gray-600 font-medium w-8 text-right">28%</span>
+            </div>
+          </div>
 
-          <label class="flex items-center space-x-3 cursor-pointer">
-            <input type="radio" name="poll" value="kup" class="text-fks-red">
-            <span>Osvajanje Kupa BiH</span>
-            <span class="ml-auto text-sm text-gray-600">15%</span>
-          </label>
+          <!-- Option 3 -->
+          <div class="flex items-center">
+            <div class="w-2/3 flex items-center">
+              <input type="radio" name="favorite-player" value="leon" class="text-fks-red focus:ring-fks-red mr-3"
+                data-percentage="22">
+              <span class="text-gray-600 font-medium">Leon Benko</span>
+            </div>
+            <div class="w-1/3 flex items-center justify-end space-x-3">
+              <div class="w-full max-w-32">
+                <div class="w-full bg-[rgba(69,7,9,0.2)] rounded-full h-3">
+                  <div class="bg-[#2d0405] h-3 rounded-full transition-all duration-500" style="width: 22%"></div>
+                </div>
+              </div>
+              <span class="text-sm text-gray-600 font-medium w-8 text-right">22%</span>
+            </div>
+          </div>
 
-          <label class="flex items-center space-x-3 cursor-pointer">
-            <input type="radio" name="poll" value="ostanak" class="text-fks-red">
-            <span>Mirna sezona bez briga</span>
-            <span class="ml-auto text-sm text-gray-600">10%</span>
-          </label>
-        </form>
+          <!-- Option 4 -->
+          <div class="flex items-center">
+            <div class="w-2/3 flex items-center">
+              <input type="radio" name="favorite-player" value="vladan" class="text-fks-red focus:ring-fks-red mr-3"
+                data-percentage="15">
+              <span class="text-gray-600 font-medium">Vladan Kovačević</span>
+            </div>
+            <div class="w-1/3 flex items-center justify-end space-x-3">
+              <div class="w-full max-w-32">
+                <div class="w-full bg-[rgba(69,7,9,0.2)] rounded-full h-3">
+                  <div class="bg-[#2d0405] h-3 rounded-full transition-all duration-500" style="width: 15%"></div>
+                </div>
+              </div>
+              <span class="text-sm text-gray-600 font-medium w-8 text-right">15%</span>
+            </div>
+          </div>
+        </div>
 
-        <button class="mt-4 bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors">
-          Glasaj
-        </button>
-
-        <p class="text-sm text-gray-600 mt-2">Ukupno glasova: 1,247</p>
+        <div class="mt-6 flex justify-between items-center">
+          <button id="vote-btn"
+            class="bg-fks-red text-white px-6 py-2 rounded-lg hover:bg-fks-dark-red transition-colors font-medium">
+            Glasaj
+          </button>
+          <p class="text-sm text-gray-600">Ukupno glasova: <span id="total-votes">1,247</span></p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="kontakt" class="bg-fks-dark-red text-white py-12">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+  <footer id="kontakt" class="bg-fks-red text-white py-16 w-full">
+    <div class="px-8 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
         <div>
-          <h3 class="text-xl font-bold mb-4">FKSInfo</h3>
-          <p class="text-red-200">Najveći fan portal posvećen FK Sarajevo. Sve vijesti, analize i informacije o našem
-            ljubimom klubu.</p>
-        </div>
-
-        <div>
-          <h4 class="font-semibold mb-4">Navigacija</h4>
-          <ul class="space-y-2 text-red-200">
-            <li><a href="#" class="hover:text-white transition-colors">Početna</a></li>
-            <li><a href="#vijesti" class="hover:text-white transition-colors">Vijesti</a></li>
-            <li><a href="#utakmice" class="hover:text-white transition-colors">Utakmice</a></li>
-            <li><a href="#igraci" class="hover:text-white transition-colors">Igrači</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-semibold mb-4">Klub</h4>
-          <ul class="space-y-2 text-red-200">
-            <li><a href="#" class="hover:text-white transition-colors">Historija</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Stadion</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Uprava</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">Kontakt</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-semibold mb-4">Pratite nas</h4>
-          <div class="flex space-x-4 text-red-200">
-            <a href="#" class="hover:text-white transition-colors">Facebook</a>
-            <a href="#" class="hover:text-white transition-colors">Twitter</a>
-            <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <div class="flex items-center mb-4">
+            <img src="logo.svg" alt="FKS Logo" class="w-[50%] mr-3">
           </div>
+          <p class="text-white opacity-80 leading-relaxed text-sm">Najveći fan portal posvećen FK Sarajevo.<br>
+            Sve vijesti, analize i informacije o našem<br>
+            klubu.</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-white font-oswald">Navigacija</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Početna</a></li>
+            <li><a href="vijesti.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Vijesti</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-white font-oswald">Klub</h4>
+          <ul class="space-y-3">
+            <li><a href="klub.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Historija</a>
+            </li>
+            <li><a href="klub.html#stadion"
+                class="text-white opacity-80 hover:opacity-100 transition-opacity">Stadion</a></li>
+            <li><a href="klub.html#uprava" class="text-white opacity-80 hover:opacity-100 transition-opacity">Uprava</a>
+            </li>
+            <li><a href="kontakt.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-white font-oswald">Pratite Sarajevo</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Facebook</a></li>
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Twitter</a></li>
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Instagram</a></li>
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">FKS Website</a></li>
+          </ul>
         </div>
       </div>
 
-      <div class="border-t border-red-800 mt-8 pt-8 text-center text-red-200">
-        <p>&copy; 2024 FKSInfo. Sva prava zadržana.</p>
-        <p class="mt-2">Powered by FKSInfo team</p>
+      <div class="border-t border-white border-opacity-20 pt-8 text-center">
+        <p class="text-white opacity-80">&copy; 2025 FKSInfo. Sva prava zadržana.</p>
+        <p class="mt-2 text-white opacity-60">Powered by FKSInfo team</p>
       </div>
     </div>
   </footer>
@@ -843,6 +764,77 @@
         overlay.style.visibility = 'hidden';
       }
     });
+
+    // Poll functionality
+    const pollOptions = document.querySelectorAll('input[name="favorite-player"]');
+    const voteBtn = document.getElementById('vote-btn');
+    const totalVotesElement = document.getElementById('total-votes');
+    const progressBars = document.querySelectorAll('.bg-\\[\\#2d0405\\].h-3.rounded-full');
+    const percentageSpans = document.querySelectorAll('.text-sm.text-gray-600.font-medium.w-8.text-right');
+
+    // Initial vote counts (stored in data-percentage attributes)
+    let voteCounts = {
+      mersudin: 437, // 35% of 1247
+      dal: 349,      // 28% of 1247
+      leon: 274,     // 22% of 1247
+      vladan: 187    // 15% of 1247
+    };
+
+    let totalVotes = 1247;
+    let hasVoted = false;
+
+    // Update progress bars and percentages
+    function updatePollDisplay() {
+      const options = ['mersudin', 'dal', 'leon', 'vladan'];
+
+      options.forEach((option, index) => {
+        const percentage = Math.round((voteCounts[option] / totalVotes) * 100);
+        progressBars[index].style.width = percentage + '%';
+        percentageSpans[index].textContent = percentage + '%';
+      });
+
+      totalVotesElement.textContent = totalVotes.toLocaleString();
+    }
+
+    // Handle vote button click
+    if (voteBtn) {
+      voteBtn.addEventListener('click', function () {
+        const selectedOption = document.querySelector('input[name="favorite-player"]:checked');
+
+        if (!selectedOption) {
+          alert('Molimo odaberite igrača prije glasanja.');
+          return;
+        }
+
+        if (hasVoted) {
+          alert('Već ste glasali u ovoj anketi.');
+          return;
+        }
+
+        // Add vote to selected option
+        const selectedValue = selectedOption.value;
+        voteCounts[selectedValue]++;
+        totalVotes++;
+        hasVoted = true;
+
+        // Update display
+        updatePollDisplay();
+
+        // Disable all radio buttons and button
+        pollOptions.forEach(option => option.disabled = true);
+        voteBtn.disabled = true;
+        voteBtn.textContent = 'Glasano';
+        voteBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+        // Show success message
+        setTimeout(() => {
+          alert('Hvala na glasanju! Vaš glas je zabilježen.');
+        }, 100);
+      });
+    }
+
+    // Initialize poll display
+    updatePollDisplay();
   });
 </script>
 
