@@ -5,157 +5,250 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fan zona - FKSInfo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'fks-red': '#8B0000',
-            'fks-dark-red': '#660000',
-            'fks-light-red': '#B22222'
+            'fks-red': '#450709',
+            'fks-dark-red': '#2d0405',
+            'fks-light-red': '#5a0a0d',
+            'text-dark': '#333333'
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+            'oswald': ['Oswald', 'ui-sans-serif', 'system-ui', 'sans-serif'],
           }
         }
       }
     }
   </script>
+  <style>
+    .mobile-menu-toggle:checked~.mobile-menu {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-toggle:checked+label .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-toggle:checked+label .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle:checked+label .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Custom Scrollbar Styling */
+    .photo-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .photo-gallery::-webkit-scrollbar-track {
+      background: rgba(69, 7, 9, 0.2);
+      border-radius: 10px;
+    }
+
+    .photo-gallery::-webkit-scrollbar-thumb {
+      background: #2d0405;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .photo-gallery::-webkit-scrollbar-thumb:hover {
+      background: #1a0203;
+    }
+
+    /* Ensure mobile menu is clickable */
+    .mobile-menu {
+      pointer-events: auto;
+    }
+
+    .mobile-overlay {
+      pointer-events: none;
+    }
+
+    .mobile-menu-toggle:checked~.mobile-overlay {
+      pointer-events: auto;
+    }
+
+    /* Navigation underline animation */
+    @keyframes slideIn {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    /* Add overlay when mobile menu is open */
+    .mobile-menu-toggle:checked~.mobile-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Custom Radio Button Styling */
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    input[type="radio"]:checked {
+      border-color: #450709;
+      background-color: #450709;
+    }
+
+    input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    input[type="radio"]:hover {
+      border-color: #5a0a0d;
+    }
+
+    input[type="radio"]:focus {
+      box-shadow: 0 0 0 3px rgba(69, 7, 9, 0.2);
+    }
+  </style>
 </head>
 
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-gray-100 text-gray-900 font-sans antialiased">
   <!-- Navbar -->
-  <nav class="bg-fks-red text-white sticky top-0 z-50 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
-        <a href="index.html" class="text-2xl font-bold hover:text-red-200">FKSInfo</a>
-        <div class="hidden md:flex space-x-6">
-          <a href="index.html" class="hover:text-red-200">Početna</a>
-          <a href="vijesti.html" class="hover:text-red-200">Vijesti</a>
-          <a href="utakmice.html" class="hover:text-red-200">Utakmice</a>
-          <a href="klub.html" class="hover:text-red-200">Klub</a>
-          <a href="igraci.html" class="hover:text-red-200">Igrači</a>
-          <a href="multimedija.html" class="hover:text-red-200">Multimedija</a>
-          <a href="fan-zona.html" class="text-red-200 font-semibold">Fan zona</a>
-          <a href="kontakt.html" class="hover:text-red-200">Kontakt</a>
+  <nav class="bg-fks-red text-white sticky top-0 z-[50] shadow-lg">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-2">
+        <!-- Logo -->
+        <div class="flex items-center justify-center">
+          <img src="logo.svg" alt="FK Sarajevo Logo" class="w-[80%]">
         </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="index.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Početna
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="vijesti.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Vijesti
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="klub.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Klub
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="multimedija.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Multimedija
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="fan-zona.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide text-red-200 transition-all duration-300 group">
+            Fan zona
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-red-200"></span>
+          </a>
+          <a href="kontakt.html"
+            class="relative px-3 py-2 text-sm font-medium  tracking-wide hover:text-red-200 transition-all duration-300 group">
+            Kontakt
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-red-200 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <input type="checkbox" id="mobile-toggle" class="mobile-menu-toggle hidden">
+        <label for="mobile-toggle"
+          class="lg:hidden cursor-pointer p-2 rounded-md hover:bg-fks-light-red transition-colors">
+          <div class="w-6 h-6 flex flex-col justify-center items-center space-y-1">
+            <span class="hamburger-line bg-white block h-0.5 w-6 transform transition-transform duration-300"></span>
+            <span class="hamburger-line bg-white block h-0.5 w-6 transform transition-transform duration-300"></span>
+            <span class="hamburger-line bg-white block h-0.5 w-6 transform transition-transform duration-300"></span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      class="mobile-overlay fixed inset-0 bg-black bg-opacity-50 z-[60] lg:hidden opacity-0 invisible transition-all duration-300">
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      class="mobile-menu fixed inset-y-0 left-0 w-72 bg-fks-dark-red transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden shadow-2xl z-[70]">
+      <div class="flex flex-col p-6 space-y-2 mt-20">
+        <!-- Mobile Logo Section -->
+        <div class="flex items-center space-x-3 mb-6 pb-4 border-b border-fks-light-red">
+          <img src="logo.svg" alt="FK Sarajevo Logo" class="h-10 w-10">
+          <div>
+            <h2 class="text-lg font-bold">FKSInfo</h2>
+            <p class="text-xs text-red-200 uppercase">Informacije o radu</p>
+          </div>
+        </div>
+
+        <a href="index.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Početna</a>
+        <a href="vijesti.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Vijesti</a>
+        <a href="klub.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Klub</a>
+        <a href="multimedija.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Multimedija</a>
+        <a href="fan-zona.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide text-red-200 bg-fks-light-red rounded-md">Fan
+          zona</a>
+        <a href="kontakt.html"
+          class="px-4 py-3 text-sm font-medium uppercase tracking-wide hover:text-red-200 hover:bg-fks-light-red transition-all duration-200 rounded-md">Kontakt</a>
       </div>
     </div>
   </nav>
 
   <!-- Page Header -->
-  <section class="bg-fks-red text-white py-12">
+  <section class="bg-fks-red text-white py-8">
     <div class="max-w-7xl mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-4">Fan zona</h1>
+      <h1 class="text-3xl font-bold text-white font-oswald mb-4">Fan zona</h1>
       <p class="text-lg text-red-200">Službena prodavnica i fan sadržaj FK Sarajevo</p>
     </div>
   </section>
 
-  <!-- Featured Products -->
-  <section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Izdvojeni proizvodi</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
-          <div class="h-64 bg-fks-red relative">
-            <div class="absolute top-4 left-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">
-              NOVO
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Domaći dres 2024/25</h3>
-            <p class="text-sm text-gray-600 mb-3">Zvaničan bordo dres nove sezone</p>
-            <div class="flex items-center justify-between">
-              <span class="text-2xl font-bold text-fks-red">89 KM</span>
-              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
-                Dodaj
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
-          <div class="h-64 bg-white border-2 border-fks-red">
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Gostujući dres 2024/25</h3>
-            <p class="text-sm text-gray-600 mb-3">Bijeli dres za gostujuće utakmice</p>
-            <div class="flex items-center justify-between">
-              <span class="text-2xl font-bold text-fks-red">89 KM</span>
-              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
-                Dodaj
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
-          <div class="h-64 bg-gray-600">
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">FK Sarajevo šal</h3>
-            <p class="text-sm text-gray-600 mb-3">Klasičan navijački šal</p>
-            <div class="flex items-center justify-between">
-              <span class="text-2xl font-bold text-fks-red">25 KM</span>
-              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
-                Dodaj
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
-          <div class="h-64 bg-fks-red">
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Bordo kačket</h3>
-            <p class="text-sm text-gray-600 mb-3">Kačket sa zvaničnim logom</p>
-            <div class="flex items-center justify-between">
-              <span class="text-2xl font-bold text-fks-red">35 KM</span>
-              <button class="bg-fks-red text-white px-4 py-2 rounded hover:bg-fks-dark-red transition-colors">
-                Dodaj
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Categories -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-fks-red mb-8">Kategorije proizvoda</h2>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-          <div class="text-4xl mb-4">👕</div>
-          <h3 class="font-bold">Dresovi</h3>
-          <p class="text-sm text-gray-600 mt-2">12 proizvoda</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-          <div class="text-4xl mb-4">🧢</div>
-          <h3 class="font-bold">Kačketi</h3>
-          <p class="text-sm text-gray-600 mt-2">8 proizvoda</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-          <div class="text-4xl mb-4">🧣</div>
-          <h3 class="font-bold">Šalovi</h3>
-          <p class="text-sm text-gray-600 mt-2">5 proizvoda</p>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-          <div class="text-4xl mb-4">⚽</div>
-          <h3 class="font-bold">Aksesori</h3>
-          <p class="text-sm text-gray-600 mt-2">15 proizvoda</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Fan Poll -->
-  <section class="py-12 bg-white">
+  <section class="py-24 bg-white">
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-fks-red mb-8">Navijačka anketa</h2>
 
@@ -226,37 +319,8 @@
     </div>
   </section>
 
-  <!-- Fan Stats -->
-  <section class="py-12 bg-fks-red text-white">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center">Navijačke statistike</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="text-4xl font-bold mb-2">13,500</div>
-          <div class="text-red-200">Sezonski karta</div>
-        </div>
-
-        <div>
-          <div class="text-4xl font-bold mb-2">78</div>
-          <div class="text-red-200">Godina tradicije</div>
-        </div>
-
-        <div>
-          <div class="text-4xl font-bold mb-2">1987</div>
-          <div class="text-red-200">Godina osnivanja HZ</div>
-        </div>
-
-        <div>
-          <div class="text-4xl font-bold mb-2">50K+</div>
-          <div class="text-red-200">Aktivni navijači</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Newsletter -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-24 bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold text-fks-red mb-4">Prijavite se za newsletter</h2>
       <p class="text-gray-600 mb-8">Budite prvi koji će saznati o novim proizvodima i akcijama</p>
@@ -273,11 +337,55 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-fks-dark-red text-white py-12">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center">
-        <p>&copy; 2024 FKSInfo. Sva prava zadržana.</p>
-        <p class="mt-2">Powered by FKSInfo team</p>
+  <footer id="kontakt" class="bg-fks-red text-white py-16 w-full">
+    <div class="px-8 lg:px-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <div class="flex items-center mb-4">
+            <img src="logo.svg" alt="FKS Logo" class="w-[50%] mr-3">
+          </div>
+          <p class="text-white opacity-80 leading-relaxed text-sm">Najveći fan portal posvećen FK Sarajevo.<br>
+            Sve vijesti, analize i informacije o našem<br>
+            klubu.</p>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-white font-oswald">Navigacija</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Početna</a></li>
+            <li><a href="vijesti.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Vijesti</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-white font-oswald">Klub</h4>
+          <ul class="space-y-3">
+            <li><a href="klub.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Historija</a>
+            </li>
+            <li><a href="klub.html#stadion"
+                class="text-white opacity-80 hover:opacity-100 transition-opacity">Stadion</a></li>
+            <li><a href="klub.html#uprava" class="text-white opacity-80 hover:opacity-100 transition-opacity">Uprava</a>
+            </li>
+            <li><a href="kontakt.html" class="text-white opacity-80 hover:opacity-100 transition-opacity">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6 text-white font-oswald">Pratite Sarajevo</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Facebook</a></li>
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Twitter</a></li>
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">Instagram</a></li>
+            <li><a href="#" class="text-white opacity-80 hover:opacity-100 transition-opacity">FKS Website</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-white border-opacity-20 pt-8 text-center">
+        <p class="text-white opacity-80">&copy; 2025 FKSInfo. Sva prava zadržana.</p>
+        <p class="mt-2 text-white opacity-60">Powered by FKSInfo team</p>
       </div>
     </div>
   </footer>

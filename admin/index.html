@@ -5,64 +5,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - FKSInfo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'fks-red': '#8B0000',
-            'fks-dark-red': '#660000',
-            'fks-light-red': '#B22222'
+            'fks-red': '#450709',
+            'fks-dark-red': '#2d0405',
+            'fks-light-red': '#5a0a0d',
+            'text-dark': '#333333'
+          },
+          fontFamily: {
+            'sans': ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif'],
+            'oswald': ['Oswald', 'ui-sans-serif', 'system-ui', 'sans-serif'],
           }
         }
       }
     }
   </script>
+  <style>
+    /* Custom Scrollbar Styling */
+    .photo-gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .photo-gallery::-webkit-scrollbar-track {
+      background: rgba(69, 7, 9, 0.2);
+      border-radius: 10px;
+    }
+
+    .photo-gallery::-webkit-scrollbar-thumb {
+      background: #2d0405;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .photo-gallery::-webkit-scrollbar-thumb:hover {
+      background: #1a0203;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50 font-sans antialiased">
   <div class="flex h-screen">
     <!-- Sidebar -->
     <nav class="bg-fks-dark-red text-white w-64 min-h-screen p-4">
       <div class="mb-8">
-        <h1 class="text-2xl font-bold">FKSInfo Admin</h1>
+        <h1 class="text-2xl font-bold font-oswald">FKSInfo Admin</h1>
         <p class="text-red-200 text-sm">FK Sarajevo CMS</p>
       </div>
 
       <ul class="space-y-2">
         <li>
-          <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg bg-red-800 text-white">
+          <a href="index.html" class="flex items-center space-x-3 p-3 rounded-lg bg-fks-red text-white">
             <span class="text-xl">🏠</span>
             <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="vijesti.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+          <a href="vijesti.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">📰</span>
             <span>Vijesti</span>
           </a>
         </li>
         <li>
-          <a href="igraci.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+          <a href="igraci.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">👥</span>
             <span>Igrači</span>
           </a>
         </li>
         <li>
-          <a href="utakmice.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+          <a href="utakmice.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">⚽</span>
             <span>Utakmice</span>
           </a>
         </li>
         <li>
-          <a href="galerija.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+          <a href="galerija.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">📸</span>
             <span>Galerija</span>
           </a>
         </li>
         <li>
-          <a href="fanzona.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+          <a href="fanzona.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">🛒</span>
             <span>Fan zona</span>
           </a>
@@ -70,12 +101,12 @@
       </ul>
 
       <div class="absolute bottom-4 left-4 right-4">
-        <div class="border-t border-red-800 pt-4">
-          <a href="../index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+        <div class="border-t border-fks-light-red pt-4">
+          <a href="../index.html" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">🌐</span>
             <span>Idi na sajt</span>
           </a>
-          <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-red-800 transition-colors">
+          <a href="#" class="flex items-center space-x-3 p-3 rounded-lg hover:bg-fks-red transition-colors">
             <span class="text-xl">🚪</span>
             <span>Odjavi se</span>
           </a>
@@ -89,7 +120,7 @@
       <header class="bg-white shadow-sm border-b border-gray-200 p-4">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-2xl font-bold text-gray-900">Dashboard</h2>
+            <h2 class="text-2xl font-bold text-gray-900 font-oswald">Dashboard</h2>
             <p class="text-gray-600">Pregled administracije FKSInfo portala</p>
           </div>
           <div class="flex items-center space-x-4">
@@ -107,7 +138,7 @@
       <main class="flex-1 overflow-y-auto p-6">
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
@@ -124,7 +155,7 @@
             </div>
           </div>
 
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
@@ -141,7 +172,7 @@
             </div>
           </div>
 
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-fks-red rounded-md flex items-center justify-center">
@@ -158,7 +189,7 @@
             </div>
           </div>
 
-          <div class="bg-white rounded-lg shadow p-6">
+          <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
@@ -179,9 +210,9 @@
         <!-- Recent Activity & Quick Actions -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <!-- Recent Activity -->
-          <div class="bg-white rounded-lg shadow">
+          <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div class="p-6 border-b border-gray-200">
-              <h3 class="text-lg font-medium text-gray-900">Najnovije aktivnosti</h3>
+              <h3 class="text-lg font-medium text-gray-900 font-oswald">Najnovije aktivnosti</h3>
             </div>
             <div class="p-6">
               <div class="space-y-4">
@@ -204,16 +235,16 @@
                 <div class="flex items-start space-x-3">
                   <div class="w-2 h-2 bg-fks-red rounded-full mt-2"></div>
                   <div class="flex-1 min-w-0">
-                    <p class="text-sm text-gray-900">Utakmica zakazana</p>
-                    <p class="text-sm text-gray-500">FK Sarajevo vs Tuzla City - prije 6 sati</p>
+                    <p class="text-sm text-gray-900">Nova utakmica dodana</p>
+                    <p class="text-sm text-gray-500">FK Sarajevo vs Željezničar - prije 6 sati</p>
                   </div>
                 </div>
 
                 <div class="flex items-start space-x-3">
                   <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
                   <div class="flex-1 min-w-0">
-                    <p class="text-sm text-gray-900">Galerija dodana</p>
-                    <p class="text-sm text-gray-500">24 nove fotografije sa utakmice - prije 1 dan</p>
+                    <p class="text-sm text-gray-900">Galerija ažurirana</p>
+                    <p class="text-sm text-gray-500">15 novih fotografija dodano - prije 1 dan</p>
                   </div>
                 </div>
               </div>
@@ -221,69 +252,39 @@
           </div>
 
           <!-- Quick Actions -->
-          <div class="bg-white rounded-lg shadow">
+          <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div class="p-6 border-b border-gray-200">
-              <h3 class="text-lg font-medium text-gray-900">Brze akcije</h3>
+              <h3 class="text-lg font-medium text-gray-900 font-oswald">Brze akcije</h3>
             </div>
             <div class="p-6">
               <div class="grid grid-cols-2 gap-4">
-                <a href="vijesti.html"
-                  class="flex flex-col items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-fks-red hover:bg-red-50 transition-colors">
-                  <span class="text-2xl mb-2">📝</span>
-                  <span class="text-sm font-medium">Nova vijest</span>
-                </a>
+                <button class="bg-fks-red text-white p-4 rounded-lg hover:bg-fks-dark-red transition-colors">
+                  <div class="text-center">
+                    <div class="text-2xl mb-2">📰</div>
+                    <div class="font-medium">Nova vijest</div>
+                  </div>
+                </button>
 
-                <a href="igraci.html"
-                  class="flex flex-col items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-fks-red hover:bg-red-50 transition-colors">
-                  <span class="text-2xl mb-2">➕</span>
-                  <span class="text-sm font-medium">Dodaj igrača</span>
-                </a>
+                <button class="bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600 transition-colors">
+                  <div class="text-center">
+                    <div class="text-2xl mb-2">👥</div>
+                    <div class="font-medium">Dodaj igrača</div>
+                  </div>
+                </button>
 
-                <a href="utakmice.html"
-                  class="flex flex-col items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-fks-red hover:bg-red-50 transition-colors">
-                  <span class="text-2xl mb-2">📅</span>
-                  <span class="text-sm font-medium">Zakažite utakmicu</span>
-                </a>
+                <button class="bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition-colors">
+                  <div class="text-center">
+                    <div class="text-2xl mb-2">⚽</div>
+                    <div class="font-medium">Nova utakmica</div>
+                  </div>
+                </button>
 
-                <a href="galerija.html"
-                  class="flex flex-col items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-fks-red hover:bg-red-50 transition-colors">
-                  <span class="text-2xl mb-2">🖼️</span>
-                  <span class="text-sm font-medium">Dodaj medije</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- System Status -->
-        <div class="mt-8 bg-white rounded-lg shadow">
-          <div class="p-6 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Status sistema</h3>
-          </div>
-          <div class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div class="flex items-center">
-                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                <div>
-                  <p class="text-sm font-medium text-gray-900">Sajt status</p>
-                  <p class="text-sm text-gray-500">Online i funkcionalan</p>
-                </div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
-                <div>
-                  <p class="text-sm font-medium text-gray-900">Baza podataka</p>
-                  <p class="text-sm text-gray-500">Povezana</p>
-                </div>
-              </div>
-
-              <div class="flex items-center">
-                <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
-                <div>
-                  <p class="text-sm font-medium text-gray-900">Backup</p>
-                  <p class="text-sm text-gray-500">Poslednji: prije 2 sata</p>
-                </div>
+                <button class="bg-purple-500 text-white p-4 rounded-lg hover:bg-purple-600 transition-colors">
+                  <div class="text-center">
+                    <div class="text-2xl mb-2">📸</div>
+                    <div class="font-medium">Upload slika</div>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
